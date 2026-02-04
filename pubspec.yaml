@@ -1,0 +1,36 @@
+name: llama_cpp_ffi
+description: Low-level Dart FFI bindings for llama.cpp (no bundled native binaries).
+version: 1.0.0
+# repository: https://github.com/your-org/llama_cpp_ffi
+
+environment:
+  sdk: ^3.10.8
+
+# Add regular dependencies here.
+dependencies:
+  ffi: ^2.1.5
+
+dev_dependencies:
+  ffigen: ^20.1.1
+  lints: ^6.0.0
+  test: ^1.25.6
+
+topics:
+  - ffi
+  - bindings
+  - llama
+  - llama-cpp
+
+ffigen: # dart run ffigen
+  name: 'llama_cpp'
+  description: 'llama.cpp binding'
+  output: 'lib/src/core/llama_cpp.dart'
+  headers:
+    entry-points:
+      - 'src/llama.cpp/include/llama.h'
+      - 'src/llama.cpp/tools/mtmd/mtmd.h'
+  compiler-opts:
+    - '-I/usr/lib/clang/17/include'
+    - '-Isrc/llama.cpp/ggml/include'
+    - '-Isrc/llama.cpp/include'
+    - '-Isrc/llama.cpp/tools/mtmd'

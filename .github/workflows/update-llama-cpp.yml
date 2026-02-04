@@ -1,0 +1,48 @@
+name: Update llama.cpp bindings
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Set up Dart
+        uses: dart-lang/setup-dart@v1
+
+      - name: Update llama.cpp and regenerate bindings
+        id: update
+        run: bash tools/update_llama_cpp.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Detect changes
+        id: diff
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create pull request
+        if: steps.diff.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: "chore: update llama.cpp to ${{ steps.update.outputs.llama_cpp_tag }}"
+          title: "chore: update llama.cpp to ${{ steps.update.outputs.llama_cpp_tag }}"
+          body: |
+            Automated update to llama.cpp release `${{ steps.update.outputs.llama_cpp_tag }}` and regenerated Dart FFI bindings.
+          branch: "automation/update-llama-cpp-${{ steps.update.outputs.llama_cpp_tag }}"
+          delete-branch: true
