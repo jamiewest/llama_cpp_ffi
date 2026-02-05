@@ -11,6 +11,8 @@ ship native binaries; you must build or provide a llama.cpp dynamic library.
 
 ## Getting Started
 
+Requires Dart 3.0 or newer.
+
 Add the dependency:
 
 ```bash

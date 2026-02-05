@@ -4,7 +4,7 @@ version: 1.0.0
 # repository: https://github.com/your-org/llama_cpp_ffi
 
 environment:
-  sdk: ^3.10.8
+  sdk: ^3.0.0
 
 # Add regular dependencies here.
 dependencies:
