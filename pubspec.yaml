@@ -4,7 +4,7 @@ version: 1.0.0
 # repository: https://github.com/your-org/llama_cpp_ffi
 
 environment:
-  sdk: ^3.0.0
+  sdk: ^3.6.0
 
 # Add regular dependencies here.
 dependencies:
@@ -31,6 +31,8 @@ ffigen: # dart run ffigen
       - 'src/llama.cpp/tools/mtmd/mtmd.h'
   compiler-opts:
     - '-I/usr/lib/clang/17/include'
+    - '-I/usr/include'
+    - '-I/usr/include/x86_64-linux-gnu'
     - '-Isrc/llama.cpp/ggml/include'
     - '-Isrc/llama.cpp/include'
     - '-Isrc/llama.cpp/tools/mtmd'
