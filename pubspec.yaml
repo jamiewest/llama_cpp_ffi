@@ -30,6 +30,8 @@ ffigen: # dart run ffigen
       - 'src/llama.cpp/include/llama.h'
       - 'src/llama.cpp/tools/mtmd/mtmd.h'
   compiler-opts:
+    - '-include'
+    - 'tools/ffigen/ffigen_shim.h'
     - '-I/usr/lib/clang/17/include'
     - '-I/usr/include'
     - '-I/usr/include/x86_64-linux-gnu'

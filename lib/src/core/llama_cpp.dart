@@ -18180,6 +18180,38 @@ class llama_cpp {
       .asFunction<ffi.Pointer<mtmd_input_chunks> Function()>();
 }
 
+typedef int_least8_t = ffi.Int8;
+typedef Dartint_least8_t = int;
+typedef int_least16_t = ffi.Int16;
+typedef Dartint_least16_t = int;
+typedef int_least32_t = ffi.Int32;
+typedef Dartint_least32_t = int;
+typedef int_least64_t = ffi.Int64;
+typedef Dartint_least64_t = int;
+typedef uint_least8_t = ffi.Uint8;
+typedef Dartuint_least8_t = int;
+typedef uint_least16_t = ffi.Uint16;
+typedef Dartuint_least16_t = int;
+typedef uint_least32_t = ffi.Uint32;
+typedef Dartuint_least32_t = int;
+typedef uint_least64_t = ffi.Uint64;
+typedef Dartuint_least64_t = int;
+typedef int_fast8_t = ffi.Int8;
+typedef Dartint_fast8_t = int;
+typedef int_fast16_t = ffi.Int16;
+typedef Dartint_fast16_t = int;
+typedef int_fast32_t = ffi.Int32;
+typedef Dartint_fast32_t = int;
+typedef int_fast64_t = ffi.Int64;
+typedef Dartint_fast64_t = int;
+typedef uint_fast8_t = ffi.Uint8;
+typedef Dartuint_fast8_t = int;
+typedef uint_fast16_t = ffi.Uint16;
+typedef Dartuint_fast16_t = int;
+typedef uint_fast32_t = ffi.Uint32;
+typedef Dartuint_fast32_t = int;
+typedef uint_fast64_t = ffi.Uint64;
+typedef Dartuint_fast64_t = int;
 typedef __int8_t = ffi.SignedChar;
 typedef Dart__int8_t = int;
 typedef __uint8_t = ffi.UnsignedChar;
@@ -18346,6 +18378,10 @@ typedef __darwin_pthread_once_t = _opaque_pthread_once_t;
 typedef __darwin_pthread_rwlock_t = _opaque_pthread_rwlock_t;
 typedef __darwin_pthread_rwlockattr_t = _opaque_pthread_rwlockattr_t;
 typedef __darwin_pthread_t = ffi.Pointer<_opaque_pthread_t>;
+typedef intmax_t = ffi.Long;
+typedef Dartintmax_t = int;
+typedef uintmax_t = ffi.UnsignedLong;
+typedef Dartuintmax_t = int;
 typedef __darwin_nl_item = ffi.Int;
 typedef Dart__darwin_nl_item = int;
 typedef __darwin_wctrans_t = ffi.Int;
@@ -18376,42 +18412,6 @@ typedef syscall_arg_t = u_int64_t;
 typedef ptrdiff_t = __darwin_ptrdiff_t;
 typedef rsize_t = __darwin_size_t;
 typedef wint_t = __darwin_wint_t;
-typedef int_least8_t = ffi.Int8;
-typedef Dartint_least8_t = int;
-typedef int_least16_t = ffi.Int16;
-typedef Dartint_least16_t = int;
-typedef int_least32_t = ffi.Int32;
-typedef Dartint_least32_t = int;
-typedef int_least64_t = ffi.Int64;
-typedef Dartint_least64_t = int;
-typedef uint_least8_t = ffi.Uint8;
-typedef Dartuint_least8_t = int;
-typedef uint_least16_t = ffi.Uint16;
-typedef Dartuint_least16_t = int;
-typedef uint_least32_t = ffi.Uint32;
-typedef Dartuint_least32_t = int;
-typedef uint_least64_t = ffi.Uint64;
-typedef Dartuint_least64_t = int;
-typedef int_fast8_t = ffi.Int8;
-typedef Dartint_fast8_t = int;
-typedef int_fast16_t = ffi.Int16;
-typedef Dartint_fast16_t = int;
-typedef int_fast32_t = ffi.Int32;
-typedef Dartint_fast32_t = int;
-typedef int_fast64_t = ffi.Int64;
-typedef Dartint_fast64_t = int;
-typedef uint_fast8_t = ffi.Uint8;
-typedef Dartuint_fast8_t = int;
-typedef uint_fast16_t = ffi.Uint16;
-typedef Dartuint_fast16_t = int;
-typedef uint_fast32_t = ffi.Uint32;
-typedef Dartuint_fast32_t = int;
-typedef uint_fast64_t = ffi.Uint64;
-typedef Dartuint_fast64_t = int;
-typedef intmax_t = ffi.Long;
-typedef Dartintmax_t = int;
-typedef uintmax_t = ffi.UnsignedLong;
-typedef Dartuintmax_t = int;
 typedef va_list = __darwin_va_list;
 typedef fpos_t = __darwin_off_t;
 
@@ -20611,11 +20611,7 @@ final class mtmd_context_params extends ffi.Struct {
   external ffi.Pointer<ffi.Void> cb_eval_user_data;
 }
 
-const int __bool_true_false_are_defined = 1;
-
-const int true$ = 1;
-
-const int false$ = 0;
+const int __WORDSIZE = 64;
 
 const int __has_safe_buffers = 1;
 
@@ -20678,20 +20674,6 @@ const int __PTHREAD_ONCE_SIZE__ = 8;
 const int __PTHREAD_RWLOCK_SIZE__ = 192;
 
 const int __PTHREAD_RWLOCKATTR_SIZE__ = 16;
-
-const int __DARWIN_WCHAR_MAX = 2147483647;
-
-const int __DARWIN_WCHAR_MIN = -2147483648;
-
-const int __DARWIN_WEOF = -1;
-
-const int _FORTIFY_SOURCE = 2;
-
-const int NULL = 0;
-
-const int USER_ADDR_NULL = 0;
-
-const int __WORDSIZE = 64;
 
 const int INT8_MAX = 127;
 
@@ -20796,6 +20778,24 @@ const int WINT_MAX = 2147483647;
 const int SIG_ATOMIC_MIN = -2147483648;
 
 const int SIG_ATOMIC_MAX = 2147483647;
+
+const int __bool_true_false_are_defined = 1;
+
+const int true$ = 1;
+
+const int false$ = 0;
+
+const int __DARWIN_WCHAR_MAX = 2147483647;
+
+const int __DARWIN_WCHAR_MIN = -2147483648;
+
+const int __DARWIN_WEOF = -1;
+
+const int _FORTIFY_SOURCE = 2;
+
+const int NULL = 0;
+
+const int USER_ADDR_NULL = 0;
 
 const int __API_TO_BE_DEPRECATED = 100000;
 
