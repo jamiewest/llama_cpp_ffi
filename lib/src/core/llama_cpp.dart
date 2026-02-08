@@ -20,505 +20,32 @@ class llama_cpp {
           lookup)
       : _lookup = lookup;
 
-  int renameat(
-    int arg0,
-    ffi.Pointer<ffi.Char> arg1,
-    int arg2,
-    ffi.Pointer<ffi.Char> arg3,
-  ) {
-    return _renameat(
-      arg0,
-      arg1,
-      arg2,
-      arg3,
-    );
-  }
+  late final ffi.Pointer<ffi.Pointer<FILE>> _stdin =
+      _lookup<ffi.Pointer<FILE>>('stdin');
 
-  late final _renameatPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Int, ffi.Pointer<ffi.Char>, ffi.Int,
-              ffi.Pointer<ffi.Char>)>>('renameat');
-  late final _renameat = _renameatPtr.asFunction<
-      int Function(int, ffi.Pointer<ffi.Char>, int, ffi.Pointer<ffi.Char>)>();
+  ffi.Pointer<FILE> get stdin => _stdin.value;
 
-  int renamex_np(
-    ffi.Pointer<ffi.Char> arg0,
-    ffi.Pointer<ffi.Char> arg1,
-    int arg2,
-  ) {
-    return _renamex_np(
-      arg0,
-      arg1,
-      arg2,
-    );
-  }
+  set stdin(ffi.Pointer<FILE> value) => _stdin.value = value;
 
-  late final _renamex_npPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
-              ffi.UnsignedInt)>>('renamex_np');
-  late final _renamex_np = _renamex_npPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int)>();
+  late final ffi.Pointer<ffi.Pointer<FILE>> _stdout =
+      _lookup<ffi.Pointer<FILE>>('stdout');
 
-  int renameatx_np(
-    int arg0,
-    ffi.Pointer<ffi.Char> arg1,
-    int arg2,
-    ffi.Pointer<ffi.Char> arg3,
-    int arg4,
-  ) {
-    return _renameatx_np(
-      arg0,
-      arg1,
-      arg2,
-      arg3,
-      arg4,
-    );
-  }
+  ffi.Pointer<FILE> get stdout => _stdout.value;
 
-  late final _renameatx_npPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Int, ffi.Pointer<ffi.Char>, ffi.Int,
-              ffi.Pointer<ffi.Char>, ffi.UnsignedInt)>>('renameatx_np');
-  late final _renameatx_np = _renameatx_npPtr.asFunction<
-      int Function(
-          int, ffi.Pointer<ffi.Char>, int, ffi.Pointer<ffi.Char>, int)>();
+  set stdout(ffi.Pointer<FILE> value) => _stdout.value = value;
 
-  int printf(
-    ffi.Pointer<ffi.Char> arg0,
-  ) {
-    return _printf(
-      arg0,
-    );
-  }
+  late final ffi.Pointer<ffi.Pointer<FILE>> _stderr =
+      _lookup<ffi.Pointer<FILE>>('stderr');
 
-  late final _printfPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
-          'printf');
-  late final _printf =
-      _printfPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
+  ffi.Pointer<FILE> get stderr => _stderr.value;
 
-  late final ffi.Pointer<ffi.Pointer<FILE>> ___stdinp =
-      _lookup<ffi.Pointer<FILE>>('__stdinp');
-
-  ffi.Pointer<FILE> get __stdinp => ___stdinp.value;
-
-  set __stdinp(ffi.Pointer<FILE> value) => ___stdinp.value = value;
-
-  late final ffi.Pointer<ffi.Pointer<FILE>> ___stdoutp =
-      _lookup<ffi.Pointer<FILE>>('__stdoutp');
-
-  ffi.Pointer<FILE> get __stdoutp => ___stdoutp.value;
-
-  set __stdoutp(ffi.Pointer<FILE> value) => ___stdoutp.value = value;
-
-  late final ffi.Pointer<ffi.Pointer<FILE>> ___stderrp =
-      _lookup<ffi.Pointer<FILE>>('__stderrp');
-
-  ffi.Pointer<FILE> get __stderrp => ___stderrp.value;
-
-  set __stderrp(ffi.Pointer<FILE> value) => ___stderrp.value = value;
-
-  void clearerr(
-    ffi.Pointer<FILE> arg0,
-  ) {
-    return _clearerr(
-      arg0,
-    );
-  }
-
-  late final _clearerrPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<FILE>)>>(
-          'clearerr');
-  late final _clearerr =
-      _clearerrPtr.asFunction<void Function(ffi.Pointer<FILE>)>();
-
-  int fclose(
-    ffi.Pointer<FILE> arg0,
-  ) {
-    return _fclose(
-      arg0,
-    );
-  }
-
-  late final _fclosePtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
-          'fclose');
-  late final _fclose = _fclosePtr.asFunction<int Function(ffi.Pointer<FILE>)>();
-
-  int feof(
-    ffi.Pointer<FILE> arg0,
-  ) {
-    return _feof(
-      arg0,
-    );
-  }
-
-  late final _feofPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>('feof');
-  late final _feof = _feofPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
-
-  int ferror(
-    ffi.Pointer<FILE> arg0,
-  ) {
-    return _ferror(
-      arg0,
-    );
-  }
-
-  late final _ferrorPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
-          'ferror');
-  late final _ferror = _ferrorPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
-
-  int fflush(
-    ffi.Pointer<FILE> arg0,
-  ) {
-    return _fflush(
-      arg0,
-    );
-  }
-
-  late final _fflushPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
-          'fflush');
-  late final _fflush = _fflushPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
-
-  int fgetc(
-    ffi.Pointer<FILE> arg0,
-  ) {
-    return _fgetc(
-      arg0,
-    );
-  }
-
-  late final _fgetcPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>('fgetc');
-  late final _fgetc = _fgetcPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
-
-  int fgetpos(
-    ffi.Pointer<FILE> arg0,
-    ffi.Pointer<fpos_t> arg1,
-  ) {
-    return _fgetpos(
-      arg0,
-      arg1,
-    );
-  }
-
-  late final _fgetposPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<FILE>, ffi.Pointer<fpos_t>)>>('fgetpos');
-  late final _fgetpos = _fgetposPtr
-      .asFunction<int Function(ffi.Pointer<FILE>, ffi.Pointer<fpos_t>)>();
-
-  ffi.Pointer<ffi.Char> fgets(
-    ffi.Pointer<ffi.Char> arg0,
-    int __size,
-    ffi.Pointer<FILE> arg2,
-  ) {
-    return _fgets(
-      arg0,
-      __size,
-      arg2,
-    );
-  }
-
-  late final _fgetsPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Char> Function(
-              ffi.Pointer<ffi.Char>, ffi.Int, ffi.Pointer<FILE>)>>('fgets');
-  late final _fgets = _fgetsPtr.asFunction<
-      ffi.Pointer<ffi.Char> Function(
-          ffi.Pointer<ffi.Char>, int, ffi.Pointer<FILE>)>();
-
-  ffi.Pointer<FILE> fopen(
-    ffi.Pointer<ffi.Char> __filename,
-    ffi.Pointer<ffi.Char> __mode,
-  ) {
-    return _fopen(
-      __filename,
-      __mode,
-    );
-  }
-
-  late final _fopenPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<FILE> Function(
-              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('fopen');
-  late final _fopen = _fopenPtr.asFunction<
-      ffi.Pointer<FILE> Function(
-          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
-
-  int fprintf(
-    ffi.Pointer<FILE> arg0,
-    ffi.Pointer<ffi.Char> arg1,
-  ) {
-    return _fprintf(
-      arg0,
-      arg1,
-    );
-  }
-
-  late final _fprintfPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>)>>('fprintf');
-  late final _fprintf = _fprintfPtr
-      .asFunction<int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>)>();
-
-  int fputc(
-    int arg0,
-    ffi.Pointer<FILE> arg1,
-  ) {
-    return _fputc(
-      arg0,
-      arg1,
-    );
-  }
-
-  late final _fputcPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Pointer<FILE>)>>(
-          'fputc');
-  late final _fputc =
-      _fputcPtr.asFunction<int Function(int, ffi.Pointer<FILE>)>();
-
-  int fputs(
-    ffi.Pointer<ffi.Char> arg0,
-    ffi.Pointer<FILE> arg1,
-  ) {
-    return _fputs(
-      arg0,
-      arg1,
-    );
-  }
-
-  late final _fputsPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<FILE>)>>('fputs');
-  late final _fputs = _fputsPtr
-      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<FILE>)>();
-
-  int fread(
-    ffi.Pointer<ffi.Void> __ptr,
-    int __size,
-    int __nitems,
-    ffi.Pointer<FILE> __stream,
-  ) {
-    return _fread(
-      __ptr,
-      __size,
-      __nitems,
-      __stream,
-    );
-  }
-
-  late final _freadPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.UnsignedLong Function(ffi.Pointer<ffi.Void>, ffi.Size, ffi.Size,
-              ffi.Pointer<FILE>)>>('fread');
-  late final _fread = _freadPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Void>, int, int, ffi.Pointer<FILE>)>();
-
-  ffi.Pointer<FILE> freopen(
-    ffi.Pointer<ffi.Char> arg0,
-    ffi.Pointer<ffi.Char> arg1,
-    ffi.Pointer<FILE> arg2,
-  ) {
-    return _freopen(
-      arg0,
-      arg1,
-      arg2,
-    );
-  }
-
-  late final _freopenPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<FILE> Function(ffi.Pointer<ffi.Char>,
-              ffi.Pointer<ffi.Char>, ffi.Pointer<FILE>)>>('freopen');
-  late final _freopen = _freopenPtr.asFunction<
-      ffi.Pointer<FILE> Function(
-          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, ffi.Pointer<FILE>)>();
-
-  int fscanf(
-    ffi.Pointer<FILE> arg0,
-    ffi.Pointer<ffi.Char> arg1,
-  ) {
-    return _fscanf(
-      arg0,
-      arg1,
-    );
-  }
-
-  late final _fscanfPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>)>>('fscanf');
-  late final _fscanf = _fscanfPtr
-      .asFunction<int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>)>();
-
-  int fseek(
-    ffi.Pointer<FILE> arg0,
-    int arg1,
-    int arg2,
-  ) {
-    return _fseek(
-      arg0,
-      arg1,
-      arg2,
-    );
-  }
-
-  late final _fseekPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<FILE>, ffi.Long, ffi.Int)>>('fseek');
-  late final _fseek =
-      _fseekPtr.asFunction<int Function(ffi.Pointer<FILE>, int, int)>();
-
-  int fsetpos(
-    ffi.Pointer<FILE> arg0,
-    ffi.Pointer<fpos_t> arg1,
-  ) {
-    return _fsetpos(
-      arg0,
-      arg1,
-    );
-  }
-
-  late final _fsetposPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<FILE>, ffi.Pointer<fpos_t>)>>('fsetpos');
-  late final _fsetpos = _fsetposPtr
-      .asFunction<int Function(ffi.Pointer<FILE>, ffi.Pointer<fpos_t>)>();
-
-  int ftell(
-    ffi.Pointer<FILE> arg0,
-  ) {
-    return _ftell(
-      arg0,
-    );
-  }
-
-  late final _ftellPtr =
-      _lookup<ffi.NativeFunction<ffi.Long Function(ffi.Pointer<FILE>)>>(
-          'ftell');
-  late final _ftell = _ftellPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
-
-  int fwrite(
-    ffi.Pointer<ffi.Void> __ptr,
-    int __size,
-    int __nitems,
-    ffi.Pointer<FILE> __stream,
-  ) {
-    return _fwrite(
-      __ptr,
-      __size,
-      __nitems,
-      __stream,
-    );
-  }
-
-  late final _fwritePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.UnsignedLong Function(ffi.Pointer<ffi.Void>, ffi.Size, ffi.Size,
-              ffi.Pointer<FILE>)>>('fwrite');
-  late final _fwrite = _fwritePtr.asFunction<
-      int Function(ffi.Pointer<ffi.Void>, int, int, ffi.Pointer<FILE>)>();
-
-  int getc(
-    ffi.Pointer<FILE> arg0,
-  ) {
-    return _getc(
-      arg0,
-    );
-  }
-
-  late final _getcPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>('getc');
-  late final _getc = _getcPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
-
-  int getchar() {
-    return _getchar();
-  }
-
-  late final _getcharPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function()>>('getchar');
-  late final _getchar = _getcharPtr.asFunction<int Function()>();
-
-  ffi.Pointer<ffi.Char> gets(
-    ffi.Pointer<ffi.Char> arg0,
-  ) {
-    return _gets(
-      arg0,
-    );
-  }
-
-  late final _getsPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>>('gets');
-  late final _gets = _getsPtr
-      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
-
-  void perror(
-    ffi.Pointer<ffi.Char> arg0,
-  ) {
-    return _perror(
-      arg0,
-    );
-  }
-
-  late final _perrorPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Char>)>>(
-          'perror');
-  late final _perror =
-      _perrorPtr.asFunction<void Function(ffi.Pointer<ffi.Char>)>();
-
-  int putc(
-    int arg0,
-    ffi.Pointer<FILE> arg1,
-  ) {
-    return _putc(
-      arg0,
-      arg1,
-    );
-  }
-
-  late final _putcPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Pointer<FILE>)>>(
-          'putc');
-  late final _putc =
-      _putcPtr.asFunction<int Function(int, ffi.Pointer<FILE>)>();
-
-  int putchar(
-    int arg0,
-  ) {
-    return _putchar(
-      arg0,
-    );
-  }
-
-  late final _putcharPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('putchar');
-  late final _putchar = _putcharPtr.asFunction<int Function(int)>();
-
-  int puts(
-    ffi.Pointer<ffi.Char> arg0,
-  ) {
-    return _puts(
-      arg0,
-    );
-  }
-
-  late final _putsPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
-          'puts');
-  late final _puts = _putsPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
+  set stderr(ffi.Pointer<FILE> value) => _stderr.value = value;
 
   int remove(
-    ffi.Pointer<ffi.Char> arg0,
+    ffi.Pointer<ffi.Char> __filename,
   ) {
     return _remove(
-      arg0,
+      __filename,
     );
   }
 
@@ -545,105 +72,39 @@ class llama_cpp {
   late final _rename = _renamePtr
       .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
 
-  void rewind(
-    ffi.Pointer<FILE> arg0,
+  int renameat(
+    int __oldfd,
+    ffi.Pointer<ffi.Char> __old,
+    int __newfd,
+    ffi.Pointer<ffi.Char> __new,
   ) {
-    return _rewind(
-      arg0,
+    return _renameat(
+      __oldfd,
+      __old,
+      __newfd,
+      __new,
     );
   }
 
-  late final _rewindPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<FILE>)>>(
-          'rewind');
-  late final _rewind =
-      _rewindPtr.asFunction<void Function(ffi.Pointer<FILE>)>();
-
-  int scanf(
-    ffi.Pointer<ffi.Char> arg0,
-  ) {
-    return _scanf(
-      arg0,
-    );
-  }
-
-  late final _scanfPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
-          'scanf');
-  late final _scanf =
-      _scanfPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
-
-  void setbuf(
-    ffi.Pointer<FILE> arg0,
-    ffi.Pointer<ffi.Char> arg1,
-  ) {
-    return _setbuf(
-      arg0,
-      arg1,
-    );
-  }
-
-  late final _setbufPtr = _lookup<
+  late final _renameatPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>)>>('setbuf');
-  late final _setbuf = _setbufPtr
-      .asFunction<void Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>)>();
+          ffi.Int Function(ffi.Int, ffi.Pointer<ffi.Char>, ffi.Int,
+              ffi.Pointer<ffi.Char>)>>('renameat');
+  late final _renameat = _renameatPtr.asFunction<
+      int Function(int, ffi.Pointer<ffi.Char>, int, ffi.Pointer<ffi.Char>)>();
 
-  int setvbuf(
-    ffi.Pointer<FILE> arg0,
-    ffi.Pointer<ffi.Char> arg1,
-    int arg2,
-    int __size,
+  int fclose(
+    ffi.Pointer<FILE> __stream,
   ) {
-    return _setvbuf(
-      arg0,
-      arg1,
-      arg2,
-      __size,
+    return _fclose(
+      __stream,
     );
   }
 
-  late final _setvbufPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>, ffi.Int,
-              ffi.Size)>>('setvbuf');
-  late final _setvbuf = _setvbufPtr.asFunction<
-      int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>, int, int)>();
-
-  int sprintf(
-    ffi.Pointer<ffi.Char> arg0,
-    ffi.Pointer<ffi.Char> arg1,
-  ) {
-    return _sprintf(
-      arg0,
-      arg1,
-    );
-  }
-
-  late final _sprintfPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('sprintf');
-  late final _sprintf = _sprintfPtr
-      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
-
-  int sscanf(
-    ffi.Pointer<ffi.Char> arg0,
-    ffi.Pointer<ffi.Char> arg1,
-  ) {
-    return _sscanf(
-      arg0,
-      arg1,
-    );
-  }
-
-  late final _sscanfPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('sscanf');
-  late final _sscanf = _sscanfPtr
-      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+  late final _fclosePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
+          'fclose');
+  late final _fclose = _fclosePtr.asFunction<int Function(ffi.Pointer<FILE>)>();
 
   ffi.Pointer<FILE> tmpfile() {
     return _tmpfile();
@@ -667,97 +128,110 @@ class llama_cpp {
   late final _tmpnam = _tmpnamPtr
       .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
 
-  int ungetc(
-    int arg0,
-    ffi.Pointer<FILE> arg1,
+  ffi.Pointer<ffi.Char> tmpnam_r(
+    ffi.Pointer<ffi.Char> __s,
   ) {
-    return _ungetc(
-      arg0,
-      arg1,
+    return _tmpnam_r(
+      __s,
     );
   }
 
-  late final _ungetcPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Pointer<FILE>)>>(
-          'ungetc');
-  late final _ungetc =
-      _ungetcPtr.asFunction<int Function(int, ffi.Pointer<FILE>)>();
-
-  int vfprintf(
-    ffi.Pointer<FILE> arg0,
-    ffi.Pointer<ffi.Char> arg1,
-    va_list arg2,
-  ) {
-    return _vfprintf(
-      arg0,
-      arg1,
-      arg2,
-    );
-  }
-
-  late final _vfprintfPtr = _lookup<
+  late final _tmpnam_rPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>, va_list)>>('vfprintf');
-  late final _vfprintf = _vfprintfPtr.asFunction<
-      int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>, va_list)>();
-
-  int vprintf(
-    ffi.Pointer<ffi.Char> arg0,
-    va_list arg1,
-  ) {
-    return _vprintf(
-      arg0,
-      arg1,
-    );
-  }
-
-  late final _vprintfPtr = _lookup<
-          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>, va_list)>>(
-      'vprintf');
-  late final _vprintf =
-      _vprintfPtr.asFunction<int Function(ffi.Pointer<ffi.Char>, va_list)>();
-
-  int vsprintf(
-    ffi.Pointer<ffi.Char> arg0,
-    ffi.Pointer<ffi.Char> arg1,
-    va_list arg2,
-  ) {
-    return _vsprintf(
-      arg0,
-      arg1,
-      arg2,
-    );
-  }
-
-  late final _vsprintfPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
-              va_list)>>('vsprintf');
-  late final _vsprintf = _vsprintfPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, va_list)>();
-
-  ffi.Pointer<ffi.Char> ctermid(
-    ffi.Pointer<ffi.Char> arg0,
-  ) {
-    return _ctermid(
-      arg0,
-    );
-  }
-
-  late final _ctermidPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>>('ctermid');
-  late final _ctermid = _ctermidPtr
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>>('tmpnam_r');
+  late final _tmpnam_r = _tmpnam_rPtr
       .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
 
+  ffi.Pointer<ffi.Char> tempnam(
+    ffi.Pointer<ffi.Char> __dir,
+    ffi.Pointer<ffi.Char> __pfx,
+  ) {
+    return _tempnam(
+      __dir,
+      __pfx,
+    );
+  }
+
+  late final _tempnamPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('tempnam');
+  late final _tempnam = _tempnamPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  int fflush(
+    ffi.Pointer<FILE> __stream,
+  ) {
+    return _fflush(
+      __stream,
+    );
+  }
+
+  late final _fflushPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
+          'fflush');
+  late final _fflush = _fflushPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
+
+  int fflush_unlocked(
+    ffi.Pointer<FILE> __stream,
+  ) {
+    return _fflush_unlocked(
+      __stream,
+    );
+  }
+
+  late final _fflush_unlockedPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
+          'fflush_unlocked');
+  late final _fflush_unlocked =
+      _fflush_unlockedPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
+
+  ffi.Pointer<FILE> fopen(
+    ffi.Pointer<ffi.Char> __filename,
+    ffi.Pointer<ffi.Char> __modes,
+  ) {
+    return _fopen(
+      __filename,
+      __modes,
+    );
+  }
+
+  late final _fopenPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<FILE> Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('fopen');
+  late final _fopen = _fopenPtr.asFunction<
+      ffi.Pointer<FILE> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<FILE> freopen(
+    ffi.Pointer<ffi.Char> __filename,
+    ffi.Pointer<ffi.Char> __modes,
+    ffi.Pointer<FILE> __stream,
+  ) {
+    return _freopen(
+      __filename,
+      __modes,
+      __stream,
+    );
+  }
+
+  late final _freopenPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<FILE> Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>, ffi.Pointer<FILE>)>>('freopen');
+  late final _freopen = _freopenPtr.asFunction<
+      ffi.Pointer<FILE> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, ffi.Pointer<FILE>)>();
+
   ffi.Pointer<FILE> fdopen(
-    int arg0,
-    ffi.Pointer<ffi.Char> arg1,
+    int __fd,
+    ffi.Pointer<ffi.Char> __modes,
   ) {
     return _fdopen(
-      arg0,
-      arg1,
+      __fd,
+      __modes,
     );
   }
 
@@ -768,146 +242,514 @@ class llama_cpp {
   late final _fdopen = _fdopenPtr
       .asFunction<ffi.Pointer<FILE> Function(int, ffi.Pointer<ffi.Char>)>();
 
-  int fileno(
-    ffi.Pointer<FILE> arg0,
+  ffi.Pointer<FILE> fopencookie(
+    ffi.Pointer<ffi.Void> __magic_cookie,
+    ffi.Pointer<ffi.Char> __modes,
+    cookie_io_functions_t __io_funcs,
   ) {
-    return _fileno(
-      arg0,
+    return _fopencookie(
+      __magic_cookie,
+      __modes,
+      __io_funcs,
     );
   }
 
-  late final _filenoPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
-          'fileno');
-  late final _fileno = _filenoPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
-
-  int pclose(
-    ffi.Pointer<FILE> arg0,
-  ) {
-    return _pclose(
-      arg0,
-    );
-  }
-
-  late final _pclosePtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
-          'pclose');
-  late final _pclose = _pclosePtr.asFunction<int Function(ffi.Pointer<FILE>)>();
-
-  ffi.Pointer<FILE> popen(
-    ffi.Pointer<ffi.Char> arg0,
-    ffi.Pointer<ffi.Char> arg1,
-  ) {
-    return _popen(
-      arg0,
-      arg1,
-    );
-  }
-
-  late final _popenPtr = _lookup<
+  late final _fopencookiePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<FILE> Function(
-              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('popen');
-  late final _popen = _popenPtr.asFunction<
+          ffi.Pointer<FILE> Function(ffi.Pointer<ffi.Void>,
+              ffi.Pointer<ffi.Char>, cookie_io_functions_t)>>('fopencookie');
+  late final _fopencookie = _fopencookiePtr.asFunction<
+      ffi.Pointer<FILE> Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Char>,
+          cookie_io_functions_t)>();
+
+  ffi.Pointer<FILE> fmemopen(
+    ffi.Pointer<ffi.Void> __s,
+    int __len,
+    ffi.Pointer<ffi.Char> __modes,
+  ) {
+    return _fmemopen(
+      __s,
+      __len,
+      __modes,
+    );
+  }
+
+  late final _fmemopenPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<FILE> Function(ffi.Pointer<ffi.Void>, ffi.Size,
+              ffi.Pointer<ffi.Char>)>>('fmemopen');
+  late final _fmemopen = _fmemopenPtr.asFunction<
       ffi.Pointer<FILE> Function(
-          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+          ffi.Pointer<ffi.Void>, int, ffi.Pointer<ffi.Char>)>();
 
-  int __srget(
-    ffi.Pointer<FILE> arg0,
+  ffi.Pointer<FILE> open_memstream(
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __bufloc,
+    ffi.Pointer<ffi.Size> __sizeloc,
   ) {
-    return ___srget(
-      arg0,
+    return _open_memstream(
+      __bufloc,
+      __sizeloc,
     );
   }
 
-  late final ___srgetPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
-          '__srget');
-  late final ___srget =
-      ___srgetPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
+  late final _open_memstreamPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<FILE> Function(ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              ffi.Pointer<ffi.Size>)>>('open_memstream');
+  late final _open_memstream = _open_memstreamPtr.asFunction<
+      ffi.Pointer<FILE> Function(
+          ffi.Pointer<ffi.Pointer<ffi.Char>>, ffi.Pointer<ffi.Size>)>();
 
-  int __svfscanf(
-    ffi.Pointer<FILE> arg0,
-    ffi.Pointer<ffi.Char> arg1,
-    va_list arg2,
+  void setbuf(
+    ffi.Pointer<FILE> __stream,
+    ffi.Pointer<ffi.Char> __buf,
   ) {
-    return ___svfscanf(
-      arg0,
-      arg1,
-      arg2,
+    return _setbuf(
+      __stream,
+      __buf,
     );
   }
 
-  late final ___svfscanfPtr = _lookup<
+  late final _setbufPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>)>>('setbuf');
+  late final _setbuf = _setbufPtr
+      .asFunction<void Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>)>();
+
+  int setvbuf(
+    ffi.Pointer<FILE> __stream,
+    ffi.Pointer<ffi.Char> __buf,
+    int __modes,
+    int __n,
+  ) {
+    return _setvbuf(
+      __stream,
+      __buf,
+      __modes,
+      __n,
+    );
+  }
+
+  late final _setvbufPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>, ffi.Int,
+              ffi.Size)>>('setvbuf');
+  late final _setvbuf = _setvbufPtr.asFunction<
+      int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>, int, int)>();
+
+  void setbuffer(
+    ffi.Pointer<FILE> __stream,
+    ffi.Pointer<ffi.Char> __buf,
+    int __size,
+  ) {
+    return _setbuffer(
+      __stream,
+      __buf,
+      __size,
+    );
+  }
+
+  late final _setbufferPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>,
+              ffi.Size)>>('setbuffer');
+  late final _setbuffer = _setbufferPtr.asFunction<
+      void Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>, int)>();
+
+  void setlinebuf(
+    ffi.Pointer<FILE> __stream,
+  ) {
+    return _setlinebuf(
+      __stream,
+    );
+  }
+
+  late final _setlinebufPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<FILE>)>>(
+          'setlinebuf');
+  late final _setlinebuf =
+      _setlinebufPtr.asFunction<void Function(ffi.Pointer<FILE>)>();
+
+  int fprintf(
+    ffi.Pointer<FILE> __stream,
+    ffi.Pointer<ffi.Char> __format,
+  ) {
+    return _fprintf(
+      __stream,
+      __format,
+    );
+  }
+
+  late final _fprintfPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>)>>('fprintf');
+  late final _fprintf = _fprintfPtr
+      .asFunction<int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>)>();
+
+  int printf(
+    ffi.Pointer<ffi.Char> __format,
+  ) {
+    return _printf(
+      __format,
+    );
+  }
+
+  late final _printfPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
+          'printf');
+  late final _printf =
+      _printfPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
+
+  int sprintf(
+    ffi.Pointer<ffi.Char> __s,
+    ffi.Pointer<ffi.Char> __format,
+  ) {
+    return _sprintf(
+      __s,
+      __format,
+    );
+  }
+
+  late final _sprintfPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('sprintf');
+  late final _sprintf = _sprintfPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  int vfprintf(
+    ffi.Pointer<FILE> __s,
+    ffi.Pointer<ffi.Char> __format,
+    ffi.Pointer<__va_list_tag> __arg,
+  ) {
+    return _vfprintf(
+      __s,
+      __format,
+      __arg,
+    );
+  }
+
+  late final _vfprintfPtr = _lookup<
       ffi.NativeFunction<
           ffi.Int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>,
-              va_list)>>('__svfscanf');
-  late final ___svfscanf = ___svfscanfPtr.asFunction<
-      int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>, va_list)>();
+              ffi.Pointer<__va_list_tag>)>>('vfprintf');
+  late final _vfprintf = _vfprintfPtr.asFunction<
+      int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>,
+          ffi.Pointer<__va_list_tag>)>();
 
-  int __swbuf(
-    int arg0,
-    ffi.Pointer<FILE> arg1,
+  int vprintf(
+    ffi.Pointer<ffi.Char> __format,
+    ffi.Pointer<__va_list_tag> __arg,
   ) {
-    return ___swbuf(
-      arg0,
-      arg1,
+    return _vprintf(
+      __format,
+      __arg,
     );
   }
 
-  late final ___swbufPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Pointer<FILE>)>>(
-          '__swbuf');
-  late final ___swbuf =
-      ___swbufPtr.asFunction<int Function(int, ffi.Pointer<FILE>)>();
+  late final _vprintfPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<__va_list_tag>)>>('vprintf');
+  late final _vprintf = _vprintfPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<__va_list_tag>)>();
 
-  void flockfile(
-    ffi.Pointer<FILE> arg0,
+  int vsprintf(
+    ffi.Pointer<ffi.Char> __s,
+    ffi.Pointer<ffi.Char> __format,
+    ffi.Pointer<__va_list_tag> __arg,
   ) {
-    return _flockfile(
-      arg0,
+    return _vsprintf(
+      __s,
+      __format,
+      __arg,
     );
   }
 
-  late final _flockfilePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<FILE>)>>(
-          'flockfile');
-  late final _flockfile =
-      _flockfilePtr.asFunction<void Function(ffi.Pointer<FILE>)>();
+  late final _vsprintfPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
+              ffi.Pointer<__va_list_tag>)>>('vsprintf');
+  late final _vsprintf = _vsprintfPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
+          ffi.Pointer<__va_list_tag>)>();
 
-  int ftrylockfile(
-    ffi.Pointer<FILE> arg0,
+  int snprintf(
+    ffi.Pointer<ffi.Char> __s,
+    int __maxlen,
+    ffi.Pointer<ffi.Char> __format,
   ) {
-    return _ftrylockfile(
-      arg0,
+    return _snprintf(
+      __s,
+      __maxlen,
+      __format,
     );
   }
 
-  late final _ftrylockfilePtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
-          'ftrylockfile');
-  late final _ftrylockfile =
-      _ftrylockfilePtr.asFunction<int Function(ffi.Pointer<FILE>)>();
+  late final _snprintfPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Size,
+              ffi.Pointer<ffi.Char>)>>('snprintf');
+  late final _snprintf = _snprintfPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Char>, int, ffi.Pointer<ffi.Char>)>();
 
-  void funlockfile(
-    ffi.Pointer<FILE> arg0,
+  int vsnprintf(
+    ffi.Pointer<ffi.Char> __s,
+    int __maxlen,
+    ffi.Pointer<ffi.Char> __format,
+    ffi.Pointer<__va_list_tag> __arg,
   ) {
-    return _funlockfile(
-      arg0,
+    return _vsnprintf(
+      __s,
+      __maxlen,
+      __format,
+      __arg,
     );
   }
 
-  late final _funlockfilePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<FILE>)>>(
-          'funlockfile');
-  late final _funlockfile =
-      _funlockfilePtr.asFunction<void Function(ffi.Pointer<FILE>)>();
+  late final _vsnprintfPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Size,
+              ffi.Pointer<ffi.Char>, ffi.Pointer<__va_list_tag>)>>('vsnprintf');
+  late final _vsnprintf = _vsnprintfPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Char>, int, ffi.Pointer<ffi.Char>,
+          ffi.Pointer<__va_list_tag>)>();
+
+  int vasprintf(
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __ptr,
+    ffi.Pointer<ffi.Char> __f,
+    ffi.Pointer<__va_list_tag> __arg,
+  ) {
+    return _vasprintf(
+      __ptr,
+      __f,
+      __arg,
+    );
+  }
+
+  late final _vasprintfPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              ffi.Pointer<ffi.Char>, ffi.Pointer<__va_list_tag>)>>('vasprintf');
+  late final _vasprintf = _vasprintfPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Pointer<ffi.Char>>, ffi.Pointer<ffi.Char>,
+          ffi.Pointer<__va_list_tag>)>();
+
+  int __asprintf(
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __ptr,
+    ffi.Pointer<ffi.Char> __fmt,
+  ) {
+    return ___asprintf(
+      __ptr,
+      __fmt,
+    );
+  }
+
+  late final ___asprintfPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              ffi.Pointer<ffi.Char>)>>('__asprintf');
+  late final ___asprintf = ___asprintfPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Pointer<ffi.Char>>, ffi.Pointer<ffi.Char>)>();
+
+  int asprintf(
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __ptr,
+    ffi.Pointer<ffi.Char> __fmt,
+  ) {
+    return _asprintf(
+      __ptr,
+      __fmt,
+    );
+  }
+
+  late final _asprintfPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              ffi.Pointer<ffi.Char>)>>('asprintf');
+  late final _asprintf = _asprintfPtr.asFunction<
+      int Function(
+          ffi.Pointer<ffi.Pointer<ffi.Char>>, ffi.Pointer<ffi.Char>)>();
+
+  int vdprintf(
+    int __fd,
+    ffi.Pointer<ffi.Char> __fmt,
+    ffi.Pointer<__va_list_tag> __arg,
+  ) {
+    return _vdprintf(
+      __fd,
+      __fmt,
+      __arg,
+    );
+  }
+
+  late final _vdprintfPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Int, ffi.Pointer<ffi.Char>,
+              ffi.Pointer<__va_list_tag>)>>('vdprintf');
+  late final _vdprintf = _vdprintfPtr.asFunction<
+      int Function(int, ffi.Pointer<ffi.Char>, ffi.Pointer<__va_list_tag>)>();
+
+  int dprintf(
+    int __fd,
+    ffi.Pointer<ffi.Char> __fmt,
+  ) {
+    return _dprintf(
+      __fd,
+      __fmt,
+    );
+  }
+
+  late final _dprintfPtr = _lookup<
+          ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Pointer<ffi.Char>)>>(
+      'dprintf');
+  late final _dprintf =
+      _dprintfPtr.asFunction<int Function(int, ffi.Pointer<ffi.Char>)>();
+
+  int fscanf(
+    ffi.Pointer<FILE> __stream,
+    ffi.Pointer<ffi.Char> __format,
+  ) {
+    return _fscanf(
+      __stream,
+      __format,
+    );
+  }
+
+  late final _fscanfPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>)>>('fscanf');
+  late final _fscanf = _fscanfPtr
+      .asFunction<int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>)>();
+
+  int scanf(
+    ffi.Pointer<ffi.Char> __format,
+  ) {
+    return _scanf(
+      __format,
+    );
+  }
+
+  late final _scanfPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
+          'scanf');
+  late final _scanf =
+      _scanfPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
+
+  int sscanf(
+    ffi.Pointer<ffi.Char> __s,
+    ffi.Pointer<ffi.Char> __format,
+  ) {
+    return _sscanf(
+      __s,
+      __format,
+    );
+  }
+
+  late final _sscanfPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('sscanf');
+  late final _sscanf = _sscanfPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  int vfscanf(
+    ffi.Pointer<FILE> __s,
+    ffi.Pointer<ffi.Char> __format,
+    ffi.Pointer<__va_list_tag> __arg,
+  ) {
+    return _vfscanf(
+      __s,
+      __format,
+      __arg,
+    );
+  }
+
+  late final _vfscanfPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>,
+              ffi.Pointer<__va_list_tag>)>>('vfscanf');
+  late final _vfscanf = _vfscanfPtr.asFunction<
+      int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>,
+          ffi.Pointer<__va_list_tag>)>();
+
+  int vscanf(
+    ffi.Pointer<ffi.Char> __format,
+    ffi.Pointer<__va_list_tag> __arg,
+  ) {
+    return _vscanf(
+      __format,
+      __arg,
+    );
+  }
+
+  late final _vscanfPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<__va_list_tag>)>>('vscanf');
+  late final _vscanf = _vscanfPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<__va_list_tag>)>();
+
+  int vsscanf(
+    ffi.Pointer<ffi.Char> __s,
+    ffi.Pointer<ffi.Char> __format,
+    ffi.Pointer<__va_list_tag> __arg,
+  ) {
+    return _vsscanf(
+      __s,
+      __format,
+      __arg,
+    );
+  }
+
+  late final _vsscanfPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
+              ffi.Pointer<__va_list_tag>)>>('vsscanf');
+  late final _vsscanf = _vsscanfPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
+          ffi.Pointer<__va_list_tag>)>();
+
+  int fgetc(
+    ffi.Pointer<FILE> __stream,
+  ) {
+    return _fgetc(
+      __stream,
+    );
+  }
+
+  late final _fgetcPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>('fgetc');
+  late final _fgetc = _fgetcPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
+
+  int getc(
+    ffi.Pointer<FILE> __stream,
+  ) {
+    return _getc(
+      __stream,
+    );
+  }
+
+  late final _getcPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>('getc');
+  late final _getc = _getcPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
+
+  int getchar() {
+    return _getchar();
+  }
+
+  late final _getcharPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('getchar');
+  late final _getchar = _getcharPtr.asFunction<int Function()>();
 
   int getc_unlocked(
-    ffi.Pointer<FILE> arg0,
+    ffi.Pointer<FILE> __stream,
   ) {
     return _getc_unlocked(
-      arg0,
+      __stream,
     );
   }
 
@@ -926,13 +768,87 @@ class llama_cpp {
   late final _getchar_unlocked =
       _getchar_unlockedPtr.asFunction<int Function()>();
 
+  int fgetc_unlocked(
+    ffi.Pointer<FILE> __stream,
+  ) {
+    return _fgetc_unlocked(
+      __stream,
+    );
+  }
+
+  late final _fgetc_unlockedPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
+          'fgetc_unlocked');
+  late final _fgetc_unlocked =
+      _fgetc_unlockedPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
+
+  int fputc(
+    int __c,
+    ffi.Pointer<FILE> __stream,
+  ) {
+    return _fputc(
+      __c,
+      __stream,
+    );
+  }
+
+  late final _fputcPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Pointer<FILE>)>>(
+          'fputc');
+  late final _fputc =
+      _fputcPtr.asFunction<int Function(int, ffi.Pointer<FILE>)>();
+
+  int putc(
+    int __c,
+    ffi.Pointer<FILE> __stream,
+  ) {
+    return _putc(
+      __c,
+      __stream,
+    );
+  }
+
+  late final _putcPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Pointer<FILE>)>>(
+          'putc');
+  late final _putc =
+      _putcPtr.asFunction<int Function(int, ffi.Pointer<FILE>)>();
+
+  int putchar(
+    int __c,
+  ) {
+    return _putchar(
+      __c,
+    );
+  }
+
+  late final _putcharPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('putchar');
+  late final _putchar = _putcharPtr.asFunction<int Function(int)>();
+
+  int fputc_unlocked(
+    int __c,
+    ffi.Pointer<FILE> __stream,
+  ) {
+    return _fputc_unlocked(
+      __c,
+      __stream,
+    );
+  }
+
+  late final _fputc_unlockedPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Pointer<FILE>)>>(
+          'fputc_unlocked');
+  late final _fputc_unlocked =
+      _fputc_unlockedPtr.asFunction<int Function(int, ffi.Pointer<FILE>)>();
+
   int putc_unlocked(
-    int arg0,
-    ffi.Pointer<FILE> arg1,
+    int __c,
+    ffi.Pointer<FILE> __stream,
   ) {
     return _putc_unlocked(
-      arg0,
-      arg1,
+      __c,
+      __stream,
     );
   }
 
@@ -943,10 +859,10 @@ class llama_cpp {
       _putc_unlockedPtr.asFunction<int Function(int, ffi.Pointer<FILE>)>();
 
   int putchar_unlocked(
-    int arg0,
+    int __c,
   ) {
     return _putchar_unlocked(
-      arg0,
+      __c,
     );
   }
 
@@ -957,10 +873,10 @@ class llama_cpp {
       _putchar_unlockedPtr.asFunction<int Function(int)>();
 
   int getw(
-    ffi.Pointer<FILE> arg0,
+    ffi.Pointer<FILE> __stream,
   ) {
     return _getw(
-      arg0,
+      __stream,
     );
   }
 
@@ -969,12 +885,12 @@ class llama_cpp {
   late final _getw = _getwPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
 
   int putw(
-    int arg0,
-    ffi.Pointer<FILE> arg1,
+    int __w,
+    ffi.Pointer<FILE> __stream,
   ) {
     return _putw(
-      arg0,
-      arg1,
+      __w,
+      __stream,
     );
   }
 
@@ -984,39 +900,282 @@ class llama_cpp {
   late final _putw =
       _putwPtr.asFunction<int Function(int, ffi.Pointer<FILE>)>();
 
-  ffi.Pointer<ffi.Char> tempnam(
-    ffi.Pointer<ffi.Char> __dir,
-    ffi.Pointer<ffi.Char> __prefix,
+  ffi.Pointer<ffi.Char> fgets(
+    ffi.Pointer<ffi.Char> __s,
+    int __n,
+    ffi.Pointer<FILE> __stream,
   ) {
-    return _tempnam(
-      __dir,
-      __prefix,
+    return _fgets(
+      __s,
+      __n,
+      __stream,
     );
   }
 
-  late final _tempnamPtr = _lookup<
+  late final _fgetsPtr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<ffi.Char> Function(
-              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('tempnam');
-  late final _tempnam = _tempnamPtr.asFunction<
+              ffi.Pointer<ffi.Char>, ffi.Int, ffi.Pointer<FILE>)>>('fgets');
+  late final _fgets = _fgetsPtr.asFunction<
       ffi.Pointer<ffi.Char> Function(
-          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+          ffi.Pointer<ffi.Char>, int, ffi.Pointer<FILE>)>();
+
+  int __getdelim(
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __lineptr,
+    ffi.Pointer<ffi.Size> __n,
+    int __delimiter,
+    ffi.Pointer<FILE> __stream,
+  ) {
+    return ___getdelim(
+      __lineptr,
+      __n,
+      __delimiter,
+      __stream,
+    );
+  }
+
+  late final ___getdelimPtr = _lookup<
+      ffi.NativeFunction<
+          __ssize_t Function(
+              ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              ffi.Pointer<ffi.Size>,
+              ffi.Int,
+              ffi.Pointer<FILE>)>>('__getdelim');
+  late final ___getdelim = ___getdelimPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Pointer<ffi.Char>>, ffi.Pointer<ffi.Size>,
+          int, ffi.Pointer<FILE>)>();
+
+  int getdelim(
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __lineptr,
+    ffi.Pointer<ffi.Size> __n,
+    int __delimiter,
+    ffi.Pointer<FILE> __stream,
+  ) {
+    return _getdelim(
+      __lineptr,
+      __n,
+      __delimiter,
+      __stream,
+    );
+  }
+
+  late final _getdelimPtr = _lookup<
+      ffi.NativeFunction<
+          __ssize_t Function(ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              ffi.Pointer<ffi.Size>, ffi.Int, ffi.Pointer<FILE>)>>('getdelim');
+  late final _getdelim = _getdelimPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Pointer<ffi.Char>>, ffi.Pointer<ffi.Size>,
+          int, ffi.Pointer<FILE>)>();
+
+  int getline(
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __lineptr,
+    ffi.Pointer<ffi.Size> __n,
+    ffi.Pointer<FILE> __stream,
+  ) {
+    return _getline(
+      __lineptr,
+      __n,
+      __stream,
+    );
+  }
+
+  late final _getlinePtr = _lookup<
+      ffi.NativeFunction<
+          __ssize_t Function(ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              ffi.Pointer<ffi.Size>, ffi.Pointer<FILE>)>>('getline');
+  late final _getline = _getlinePtr.asFunction<
+      int Function(ffi.Pointer<ffi.Pointer<ffi.Char>>, ffi.Pointer<ffi.Size>,
+          ffi.Pointer<FILE>)>();
+
+  int fputs(
+    ffi.Pointer<ffi.Char> __s,
+    ffi.Pointer<FILE> __stream,
+  ) {
+    return _fputs(
+      __s,
+      __stream,
+    );
+  }
+
+  late final _fputsPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<FILE>)>>('fputs');
+  late final _fputs = _fputsPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<FILE>)>();
+
+  int puts(
+    ffi.Pointer<ffi.Char> __s,
+  ) {
+    return _puts(
+      __s,
+    );
+  }
+
+  late final _putsPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
+          'puts');
+  late final _puts = _putsPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
+
+  int ungetc(
+    int __c,
+    ffi.Pointer<FILE> __stream,
+  ) {
+    return _ungetc(
+      __c,
+      __stream,
+    );
+  }
+
+  late final _ungetcPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Pointer<FILE>)>>(
+          'ungetc');
+  late final _ungetc =
+      _ungetcPtr.asFunction<int Function(int, ffi.Pointer<FILE>)>();
+
+  int fread(
+    ffi.Pointer<ffi.Void> __ptr,
+    int __size,
+    int __n,
+    ffi.Pointer<FILE> __stream,
+  ) {
+    return _fread(
+      __ptr,
+      __size,
+      __n,
+      __stream,
+    );
+  }
+
+  late final _freadPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.UnsignedLong Function(ffi.Pointer<ffi.Void>, ffi.Size, ffi.Size,
+              ffi.Pointer<FILE>)>>('fread');
+  late final _fread = _freadPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Void>, int, int, ffi.Pointer<FILE>)>();
+
+  int fwrite(
+    ffi.Pointer<ffi.Void> __ptr,
+    int __size,
+    int __n,
+    ffi.Pointer<FILE> __s,
+  ) {
+    return _fwrite(
+      __ptr,
+      __size,
+      __n,
+      __s,
+    );
+  }
+
+  late final _fwritePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.UnsignedLong Function(ffi.Pointer<ffi.Void>, ffi.Size, ffi.Size,
+              ffi.Pointer<FILE>)>>('fwrite');
+  late final _fwrite = _fwritePtr.asFunction<
+      int Function(ffi.Pointer<ffi.Void>, int, int, ffi.Pointer<FILE>)>();
+
+  int fread_unlocked(
+    ffi.Pointer<ffi.Void> __ptr,
+    int __size,
+    int __n,
+    ffi.Pointer<FILE> __stream,
+  ) {
+    return _fread_unlocked(
+      __ptr,
+      __size,
+      __n,
+      __stream,
+    );
+  }
+
+  late final _fread_unlockedPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Size Function(ffi.Pointer<ffi.Void>, ffi.Size, ffi.Size,
+              ffi.Pointer<FILE>)>>('fread_unlocked');
+  late final _fread_unlocked = _fread_unlockedPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Void>, int, int, ffi.Pointer<FILE>)>();
+
+  int fwrite_unlocked(
+    ffi.Pointer<ffi.Void> __ptr,
+    int __size,
+    int __n,
+    ffi.Pointer<FILE> __stream,
+  ) {
+    return _fwrite_unlocked(
+      __ptr,
+      __size,
+      __n,
+      __stream,
+    );
+  }
+
+  late final _fwrite_unlockedPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Size Function(ffi.Pointer<ffi.Void>, ffi.Size, ffi.Size,
+              ffi.Pointer<FILE>)>>('fwrite_unlocked');
+  late final _fwrite_unlocked = _fwrite_unlockedPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Void>, int, int, ffi.Pointer<FILE>)>();
+
+  int fseek(
+    ffi.Pointer<FILE> __stream,
+    int __off,
+    int __whence,
+  ) {
+    return _fseek(
+      __stream,
+      __off,
+      __whence,
+    );
+  }
+
+  late final _fseekPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<FILE>, ffi.Long, ffi.Int)>>('fseek');
+  late final _fseek =
+      _fseekPtr.asFunction<int Function(ffi.Pointer<FILE>, int, int)>();
+
+  int ftell(
+    ffi.Pointer<FILE> __stream,
+  ) {
+    return _ftell(
+      __stream,
+    );
+  }
+
+  late final _ftellPtr =
+      _lookup<ffi.NativeFunction<ffi.Long Function(ffi.Pointer<FILE>)>>(
+          'ftell');
+  late final _ftell = _ftellPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
+
+  void rewind(
+    ffi.Pointer<FILE> __stream,
+  ) {
+    return _rewind(
+      __stream,
+    );
+  }
+
+  late final _rewindPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<FILE>)>>(
+          'rewind');
+  late final _rewind =
+      _rewindPtr.asFunction<void Function(ffi.Pointer<FILE>)>();
 
   int fseeko(
     ffi.Pointer<FILE> __stream,
-    int __offset,
+    int __off,
     int __whence,
   ) {
     return _fseeko(
       __stream,
-      __offset,
+      __off,
       __whence,
     );
   }
 
   late final _fseekoPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<FILE>, off_t, ffi.Int)>>('fseeko');
+          ffi.Int Function(ffi.Pointer<FILE>, __off_t, ffi.Int)>>('fseeko');
   late final _fseeko =
       _fseekoPtr.asFunction<int Function(ffi.Pointer<FILE>, int, int)>();
 
@@ -1029,522 +1188,280 @@ class llama_cpp {
   }
 
   late final _ftelloPtr =
-      _lookup<ffi.NativeFunction<off_t Function(ffi.Pointer<FILE>)>>('ftello');
+      _lookup<ffi.NativeFunction<__off_t Function(ffi.Pointer<FILE>)>>(
+          'ftello');
   late final _ftello = _ftelloPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
 
-  int snprintf(
-    ffi.Pointer<ffi.Char> __str,
-    int __size,
-    ffi.Pointer<ffi.Char> __format,
-  ) {
-    return _snprintf(
-      __str,
-      __size,
-      __format,
-    );
-  }
-
-  late final _snprintfPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Size,
-              ffi.Pointer<ffi.Char>)>>('snprintf');
-  late final _snprintf = _snprintfPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Char>, int, ffi.Pointer<ffi.Char>)>();
-
-  int vfscanf(
+  int fgetpos(
     ffi.Pointer<FILE> __stream,
-    ffi.Pointer<ffi.Char> __format,
-    va_list arg2,
+    ffi.Pointer<fpos_t> __pos,
   ) {
-    return _vfscanf(
+    return _fgetpos(
       __stream,
-      __format,
-      arg2,
+      __pos,
     );
   }
 
-  late final _vfscanfPtr = _lookup<
+  late final _fgetposPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>, va_list)>>('vfscanf');
-  late final _vfscanf = _vfscanfPtr.asFunction<
-      int Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>, va_list)>();
+          ffi.Int Function(ffi.Pointer<FILE>, ffi.Pointer<fpos_t>)>>('fgetpos');
+  late final _fgetpos = _fgetposPtr
+      .asFunction<int Function(ffi.Pointer<FILE>, ffi.Pointer<fpos_t>)>();
 
-  int vscanf(
-    ffi.Pointer<ffi.Char> __format,
-    va_list arg1,
+  int fsetpos(
+    ffi.Pointer<FILE> __stream,
+    ffi.Pointer<fpos_t> __pos,
   ) {
-    return _vscanf(
-      __format,
-      arg1,
+    return _fsetpos(
+      __stream,
+      __pos,
     );
   }
 
-  late final _vscanfPtr = _lookup<
-          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>, va_list)>>(
-      'vscanf');
-  late final _vscanf =
-      _vscanfPtr.asFunction<int Function(ffi.Pointer<ffi.Char>, va_list)>();
-
-  int vsnprintf(
-    ffi.Pointer<ffi.Char> __str,
-    int __size,
-    ffi.Pointer<ffi.Char> __format,
-    va_list arg3,
-  ) {
-    return _vsnprintf(
-      __str,
-      __size,
-      __format,
-      arg3,
-    );
-  }
-
-  late final _vsnprintfPtr = _lookup<
+  late final _fsetposPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Size,
-              ffi.Pointer<ffi.Char>, va_list)>>('vsnprintf');
-  late final _vsnprintf = _vsnprintfPtr.asFunction<
-      int Function(
-          ffi.Pointer<ffi.Char>, int, ffi.Pointer<ffi.Char>, va_list)>();
+          ffi.Int Function(ffi.Pointer<FILE>, ffi.Pointer<fpos_t>)>>('fsetpos');
+  late final _fsetpos = _fsetposPtr
+      .asFunction<int Function(ffi.Pointer<FILE>, ffi.Pointer<fpos_t>)>();
 
-  int vsscanf(
-    ffi.Pointer<ffi.Char> __str,
-    ffi.Pointer<ffi.Char> __format,
-    va_list arg2,
-  ) {
-    return _vsscanf(
-      __str,
-      __format,
-      arg2,
-    );
-  }
-
-  late final _vsscanfPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
-              va_list)>>('vsscanf');
-  late final _vsscanf = _vsscanfPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, va_list)>();
-
-  int dprintf(
-    int arg0,
-    ffi.Pointer<ffi.Char> arg1,
-  ) {
-    return _dprintf(
-      arg0,
-      arg1,
-    );
-  }
-
-  late final _dprintfPtr = _lookup<
-          ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Pointer<ffi.Char>)>>(
-      'dprintf');
-  late final _dprintf =
-      _dprintfPtr.asFunction<int Function(int, ffi.Pointer<ffi.Char>)>();
-
-  int vdprintf(
-    int arg0,
-    ffi.Pointer<ffi.Char> arg1,
-    va_list arg2,
-  ) {
-    return _vdprintf(
-      arg0,
-      arg1,
-      arg2,
-    );
-  }
-
-  late final _vdprintfPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Int, ffi.Pointer<ffi.Char>, va_list)>>('vdprintf');
-  late final _vdprintf = _vdprintfPtr
-      .asFunction<int Function(int, ffi.Pointer<ffi.Char>, va_list)>();
-
-  int getdelim(
-    ffi.Pointer<ffi.Pointer<ffi.Char>> __linep,
-    ffi.Pointer<ffi.Size> __linecapp,
-    int __delimiter,
+  void clearerr(
     ffi.Pointer<FILE> __stream,
   ) {
-    return _getdelim(
-      __linep,
-      __linecapp,
-      __delimiter,
+    return _clearerr(
       __stream,
     );
   }
 
-  late final _getdelimPtr = _lookup<
-      ffi.NativeFunction<
-          ssize_t Function(ffi.Pointer<ffi.Pointer<ffi.Char>>,
-              ffi.Pointer<ffi.Size>, ffi.Int, ffi.Pointer<FILE>)>>('getdelim');
-  late final _getdelim = _getdelimPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Pointer<ffi.Char>>, ffi.Pointer<ffi.Size>,
-          int, ffi.Pointer<FILE>)>();
+  late final _clearerrPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<FILE>)>>(
+          'clearerr');
+  late final _clearerr =
+      _clearerrPtr.asFunction<void Function(ffi.Pointer<FILE>)>();
 
-  int getline(
-    ffi.Pointer<ffi.Pointer<ffi.Char>> __linep,
-    ffi.Pointer<ffi.Size> __linecapp,
+  int feof(
     ffi.Pointer<FILE> __stream,
   ) {
-    return _getline(
-      __linep,
-      __linecapp,
+    return _feof(
       __stream,
     );
   }
 
-  late final _getlinePtr = _lookup<
-      ffi.NativeFunction<
-          ssize_t Function(ffi.Pointer<ffi.Pointer<ffi.Char>>,
-              ffi.Pointer<ffi.Size>, ffi.Pointer<FILE>)>>('getline');
-  late final _getline = _getlinePtr.asFunction<
-      int Function(ffi.Pointer<ffi.Pointer<ffi.Char>>, ffi.Pointer<ffi.Size>,
-          ffi.Pointer<FILE>)>();
+  late final _feofPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>('feof');
+  late final _feof = _feofPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
 
-  ffi.Pointer<FILE> fmemopen(
-    ffi.Pointer<ffi.Void> __buf,
-    int __size,
-    ffi.Pointer<ffi.Char> __mode,
+  int ferror(
+    ffi.Pointer<FILE> __stream,
   ) {
-    return _fmemopen(
-      __buf,
-      __size,
-      __mode,
+    return _ferror(
+      __stream,
     );
   }
 
-  late final _fmemopenPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<FILE> Function(ffi.Pointer<ffi.Void>, ffi.Size,
-              ffi.Pointer<ffi.Char>)>>('fmemopen');
-  late final _fmemopen = _fmemopenPtr.asFunction<
-      ffi.Pointer<FILE> Function(
-          ffi.Pointer<ffi.Void>, int, ffi.Pointer<ffi.Char>)>();
-
-  ffi.Pointer<FILE> open_memstream(
-    ffi.Pointer<ffi.Pointer<ffi.Char>> __bufp,
-    ffi.Pointer<ffi.Size> __sizep,
-  ) {
-    return _open_memstream(
-      __bufp,
-      __sizep,
-    );
-  }
-
-  late final _open_memstreamPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<FILE> Function(ffi.Pointer<ffi.Pointer<ffi.Char>>,
-              ffi.Pointer<ffi.Size>)>>('open_memstream');
-  late final _open_memstream = _open_memstreamPtr.asFunction<
-      ffi.Pointer<FILE> Function(
-          ffi.Pointer<ffi.Pointer<ffi.Char>>, ffi.Pointer<ffi.Size>)>();
-
-  late final ffi.Pointer<ffi.Int> _sys_nerr = _lookup<ffi.Int>('sys_nerr');
-
-  int get sys_nerr => _sys_nerr.value;
-
-  late final ffi.Pointer<ffi.Pointer<ffi.Pointer<ffi.Char>>> _sys_errlist =
-      _lookup<ffi.Pointer<ffi.Pointer<ffi.Char>>>('sys_errlist');
-
-  ffi.Pointer<ffi.Pointer<ffi.Char>> get sys_errlist => _sys_errlist.value;
-
-  set sys_errlist(ffi.Pointer<ffi.Pointer<ffi.Char>> value) =>
-      _sys_errlist.value = value;
-
-  int asprintf(
-    ffi.Pointer<ffi.Pointer<ffi.Char>> arg0,
-    ffi.Pointer<ffi.Char> arg1,
-  ) {
-    return _asprintf(
-      arg0,
-      arg1,
-    );
-  }
-
-  late final _asprintfPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.Pointer<ffi.Char>>,
-              ffi.Pointer<ffi.Char>)>>('asprintf');
-  late final _asprintf = _asprintfPtr.asFunction<
-      int Function(
-          ffi.Pointer<ffi.Pointer<ffi.Char>>, ffi.Pointer<ffi.Char>)>();
-
-  ffi.Pointer<ffi.Char> ctermid_r(
-    ffi.Pointer<ffi.Char> arg0,
-  ) {
-    return _ctermid_r(
-      arg0,
-    );
-  }
-
-  late final _ctermid_rPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>>('ctermid_r');
-  late final _ctermid_r = _ctermid_rPtr
-      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
-
-  ffi.Pointer<ffi.Char> fgetln(
-    ffi.Pointer<FILE> arg0,
-    ffi.Pointer<ffi.Size> __len,
-  ) {
-    return _fgetln(
-      arg0,
-      __len,
-    );
-  }
-
-  late final _fgetlnPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Char> Function(
-              ffi.Pointer<FILE>, ffi.Pointer<ffi.Size>)>>('fgetln');
-  late final _fgetln = _fgetlnPtr.asFunction<
-      ffi.Pointer<ffi.Char> Function(
-          ffi.Pointer<FILE>, ffi.Pointer<ffi.Size>)>();
-
-  ffi.Pointer<ffi.Char> fmtcheck(
-    ffi.Pointer<ffi.Char> arg0,
-    ffi.Pointer<ffi.Char> arg1,
-  ) {
-    return _fmtcheck(
-      arg0,
-      arg1,
-    );
-  }
-
-  late final _fmtcheckPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Char> Function(
-              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('fmtcheck');
-  late final _fmtcheck = _fmtcheckPtr.asFunction<
-      ffi.Pointer<ffi.Char> Function(
-          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
-
-  int fpurge(
-    ffi.Pointer<FILE> arg0,
-  ) {
-    return _fpurge(
-      arg0,
-    );
-  }
-
-  late final _fpurgePtr =
+  late final _ferrorPtr =
       _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
-          'fpurge');
-  late final _fpurge = _fpurgePtr.asFunction<int Function(ffi.Pointer<FILE>)>();
+          'ferror');
+  late final _ferror = _ferrorPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
 
-  void setbuffer(
-    ffi.Pointer<FILE> arg0,
-    ffi.Pointer<ffi.Char> arg1,
-    int __size,
+  void clearerr_unlocked(
+    ffi.Pointer<FILE> __stream,
   ) {
-    return _setbuffer(
-      arg0,
-      arg1,
-      __size,
+    return _clearerr_unlocked(
+      __stream,
     );
   }
 
-  late final _setbufferPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>, ffi.Int)>>('setbuffer');
-  late final _setbuffer = _setbufferPtr.asFunction<
-      void Function(ffi.Pointer<FILE>, ffi.Pointer<ffi.Char>, int)>();
+  late final _clearerr_unlockedPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<FILE>)>>(
+          'clearerr_unlocked');
+  late final _clearerr_unlocked =
+      _clearerr_unlockedPtr.asFunction<void Function(ffi.Pointer<FILE>)>();
 
-  int setlinebuf(
-    ffi.Pointer<FILE> arg0,
+  int feof_unlocked(
+    ffi.Pointer<FILE> __stream,
   ) {
-    return _setlinebuf(
-      arg0,
+    return _feof_unlocked(
+      __stream,
     );
   }
 
-  late final _setlinebufPtr =
+  late final _feof_unlockedPtr =
       _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
-          'setlinebuf');
-  late final _setlinebuf =
-      _setlinebufPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
+          'feof_unlocked');
+  late final _feof_unlocked =
+      _feof_unlockedPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
 
-  int vasprintf(
-    ffi.Pointer<ffi.Pointer<ffi.Char>> arg0,
-    ffi.Pointer<ffi.Char> arg1,
-    va_list arg2,
+  int ferror_unlocked(
+    ffi.Pointer<FILE> __stream,
   ) {
-    return _vasprintf(
-      arg0,
-      arg1,
-      arg2,
+    return _ferror_unlocked(
+      __stream,
     );
   }
 
-  late final _vasprintfPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.Pointer<ffi.Char>>,
-              ffi.Pointer<ffi.Char>, va_list)>>('vasprintf');
-  late final _vasprintf = _vasprintfPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Pointer<ffi.Char>>, ffi.Pointer<ffi.Char>,
-          va_list)>();
+  late final _ferror_unlockedPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
+          'ferror_unlocked');
+  late final _ferror_unlocked =
+      _ferror_unlockedPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
 
-  ffi.Pointer<FILE> funopen(
-    ffi.Pointer<ffi.Void> arg0,
-    ffi.Pointer<
-            ffi.NativeFunction<
-                ffi.Int Function(
-                    ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Char>, ffi.Int)>>
-        arg1,
-    ffi.Pointer<
-            ffi.NativeFunction<
-                ffi.Int Function(
-                    ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Char>, ffi.Int)>>
-        arg2,
-    ffi.Pointer<
-            ffi.NativeFunction<
-                fpos_t Function(ffi.Pointer<ffi.Void>, fpos_t, ffi.Int)>>
-        arg3,
-    ffi.Pointer<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Void>)>>
-        arg4,
+  void perror(
+    ffi.Pointer<ffi.Char> __s,
   ) {
-    return _funopen(
-      arg0,
-      arg1,
-      arg2,
-      arg3,
-      arg4,
+    return _perror(
+      __s,
     );
   }
 
-  late final _funopenPtr = _lookup<
+  late final _perrorPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Char>)>>(
+          'perror');
+  late final _perror =
+      _perrorPtr.asFunction<void Function(ffi.Pointer<ffi.Char>)>();
+
+  int fileno(
+    ffi.Pointer<FILE> __stream,
+  ) {
+    return _fileno(
+      __stream,
+    );
+  }
+
+  late final _filenoPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
+          'fileno');
+  late final _fileno = _filenoPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
+
+  int fileno_unlocked(
+    ffi.Pointer<FILE> __stream,
+  ) {
+    return _fileno_unlocked(
+      __stream,
+    );
+  }
+
+  late final _fileno_unlockedPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
+          'fileno_unlocked');
+  late final _fileno_unlocked =
+      _fileno_unlockedPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
+
+  int pclose(
+    ffi.Pointer<FILE> __stream,
+  ) {
+    return _pclose(
+      __stream,
+    );
+  }
+
+  late final _pclosePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
+          'pclose');
+  late final _pclose = _pclosePtr.asFunction<int Function(ffi.Pointer<FILE>)>();
+
+  ffi.Pointer<FILE> popen(
+    ffi.Pointer<ffi.Char> __command,
+    ffi.Pointer<ffi.Char> __modes,
+  ) {
+    return _popen(
+      __command,
+      __modes,
+    );
+  }
+
+  late final _popenPtr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<FILE> Function(
-              ffi.Pointer<ffi.Void>,
-              ffi.Pointer<
-                  ffi.NativeFunction<
-                      ffi.Int Function(ffi.Pointer<ffi.Void>,
-                          ffi.Pointer<ffi.Char>, ffi.Int)>>,
-              ffi.Pointer<
-                  ffi.NativeFunction<
-                      ffi.Int Function(ffi.Pointer<ffi.Void>,
-                          ffi.Pointer<ffi.Char>, ffi.Int)>>,
-              ffi.Pointer<
-                  ffi.NativeFunction<
-                      fpos_t Function(ffi.Pointer<ffi.Void>, fpos_t, ffi.Int)>>,
-              ffi.Pointer<
-                  ffi.NativeFunction<
-                      ffi.Int Function(ffi.Pointer<ffi.Void>)>>)>>('funopen');
-  late final _funopen = _funopenPtr.asFunction<
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('popen');
+  late final _popen = _popenPtr.asFunction<
       ffi.Pointer<FILE> Function(
-          ffi.Pointer<ffi.Void>,
-          ffi.Pointer<
-              ffi.NativeFunction<
-                  ffi.Int Function(
-                      ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Char>, ffi.Int)>>,
-          ffi.Pointer<
-              ffi.NativeFunction<
-                  ffi.Int Function(
-                      ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Char>, ffi.Int)>>,
-          ffi.Pointer<
-              ffi.NativeFunction<
-                  fpos_t Function(ffi.Pointer<ffi.Void>, fpos_t, ffi.Int)>>,
-          ffi.Pointer<
-              ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Void>)>>)>();
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
 
-  int __snprintf_chk(
-    ffi.Pointer<ffi.Char> arg0,
-    int __maxlen,
-    int arg2,
-    int arg3,
-    ffi.Pointer<ffi.Char> arg4,
+  ffi.Pointer<ffi.Char> ctermid(
+    ffi.Pointer<ffi.Char> __s,
   ) {
-    return ___snprintf_chk(
-      arg0,
-      __maxlen,
-      arg2,
-      arg3,
-      arg4,
+    return _ctermid(
+      __s,
     );
   }
 
-  late final ___snprintf_chkPtr = _lookup<
+  late final _ctermidPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Size, ffi.Int, ffi.Size,
-              ffi.Pointer<ffi.Char>)>>('__snprintf_chk');
-  late final ___snprintf_chk = ___snprintf_chkPtr.asFunction<
-      int Function(
-          ffi.Pointer<ffi.Char>, int, int, int, ffi.Pointer<ffi.Char>)>();
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>>('ctermid');
+  late final _ctermid = _ctermidPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
 
-  int __vsnprintf_chk(
-    ffi.Pointer<ffi.Char> arg0,
-    int __maxlen,
-    int arg2,
-    int arg3,
-    ffi.Pointer<ffi.Char> arg4,
-    va_list arg5,
+  void flockfile(
+    ffi.Pointer<FILE> __stream,
   ) {
-    return ___vsnprintf_chk(
-      arg0,
-      __maxlen,
-      arg2,
-      arg3,
-      arg4,
-      arg5,
+    return _flockfile(
+      __stream,
     );
   }
 
-  late final ___vsnprintf_chkPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Size, ffi.Int, ffi.Size,
-              ffi.Pointer<ffi.Char>, va_list)>>('__vsnprintf_chk');
-  late final ___vsnprintf_chk = ___vsnprintf_chkPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Char>, int, int, int, ffi.Pointer<ffi.Char>,
-          va_list)>();
+  late final _flockfilePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<FILE>)>>(
+          'flockfile');
+  late final _flockfile =
+      _flockfilePtr.asFunction<void Function(ffi.Pointer<FILE>)>();
 
-  int __sprintf_chk(
-    ffi.Pointer<ffi.Char> arg0,
+  int ftrylockfile(
+    ffi.Pointer<FILE> __stream,
+  ) {
+    return _ftrylockfile(
+      __stream,
+    );
+  }
+
+  late final _ftrylockfilePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
+          'ftrylockfile');
+  late final _ftrylockfile =
+      _ftrylockfilePtr.asFunction<int Function(ffi.Pointer<FILE>)>();
+
+  void funlockfile(
+    ffi.Pointer<FILE> __stream,
+  ) {
+    return _funlockfile(
+      __stream,
+    );
+  }
+
+  late final _funlockfilePtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<FILE>)>>(
+          'funlockfile');
+  late final _funlockfile =
+      _funlockfilePtr.asFunction<void Function(ffi.Pointer<FILE>)>();
+
+  int __uflow(
+    ffi.Pointer<FILE> arg0,
+  ) {
+    return ___uflow(
+      arg0,
+    );
+  }
+
+  late final ___uflowPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>)>>(
+          '__uflow');
+  late final ___uflow =
+      ___uflowPtr.asFunction<int Function(ffi.Pointer<FILE>)>();
+
+  int __overflow(
+    ffi.Pointer<FILE> arg0,
     int arg1,
-    int arg2,
-    ffi.Pointer<ffi.Char> arg3,
   ) {
-    return ___sprintf_chk(
+    return ___overflow(
       arg0,
       arg1,
-      arg2,
-      arg3,
     );
   }
 
-  late final ___sprintf_chkPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Int, ffi.Size,
-              ffi.Pointer<ffi.Char>)>>('__sprintf_chk');
-  late final ___sprintf_chk = ___sprintf_chkPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Char>, int, int, ffi.Pointer<ffi.Char>)>();
-
-  int __vsprintf_chk(
-    ffi.Pointer<ffi.Char> arg0,
-    int arg1,
-    int arg2,
-    ffi.Pointer<ffi.Char> arg3,
-    va_list arg4,
-  ) {
-    return ___vsprintf_chk(
-      arg0,
-      arg1,
-      arg2,
-      arg3,
-      arg4,
-    );
-  }
-
-  late final ___vsprintf_chkPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Int, ffi.Size,
-              ffi.Pointer<ffi.Char>, va_list)>>('__vsprintf_chk');
-  late final ___vsprintf_chk = ___vsprintf_chkPtr.asFunction<
-      int Function(
-          ffi.Pointer<ffi.Char>, int, int, ffi.Pointer<ffi.Char>, va_list)>();
+  late final ___overflowPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<FILE>, ffi.Int)>>(
+          '__overflow');
+  late final ___overflow =
+      ___overflowPtr.asFunction<int Function(ffi.Pointer<FILE>, int)>();
 
   ggml_abort_callback_t ggml_set_abort_callback(
     ggml_abort_callback_t callback,
@@ -18180,38 +18097,19 @@ class llama_cpp {
       .asFunction<ffi.Pointer<mtmd_input_chunks> Function()>();
 }
 
-typedef int_least8_t = ffi.Int8;
-typedef Dartint_least8_t = int;
-typedef int_least16_t = ffi.Int16;
-typedef Dartint_least16_t = int;
-typedef int_least32_t = ffi.Int32;
-typedef Dartint_least32_t = int;
-typedef int_least64_t = ffi.Int64;
-typedef Dartint_least64_t = int;
-typedef uint_least8_t = ffi.Uint8;
-typedef Dartuint_least8_t = int;
-typedef uint_least16_t = ffi.Uint16;
-typedef Dartuint_least16_t = int;
-typedef uint_least32_t = ffi.Uint32;
-typedef Dartuint_least32_t = int;
-typedef uint_least64_t = ffi.Uint64;
-typedef Dartuint_least64_t = int;
-typedef int_fast8_t = ffi.Int8;
-typedef Dartint_fast8_t = int;
-typedef int_fast16_t = ffi.Int16;
-typedef Dartint_fast16_t = int;
-typedef int_fast32_t = ffi.Int32;
-typedef Dartint_fast32_t = int;
-typedef int_fast64_t = ffi.Int64;
-typedef Dartint_fast64_t = int;
-typedef uint_fast8_t = ffi.Uint8;
-typedef Dartuint_fast8_t = int;
-typedef uint_fast16_t = ffi.Uint16;
-typedef Dartuint_fast16_t = int;
-typedef uint_fast32_t = ffi.Uint32;
-typedef Dartuint_fast32_t = int;
-typedef uint_fast64_t = ffi.Uint64;
-typedef Dartuint_fast64_t = int;
+typedef ptrdiff_t = ffi.Long;
+typedef Dartptrdiff_t = int;
+
+final class max_align_t extends ffi.Opaque {}
+
+typedef __u_char = ffi.UnsignedChar;
+typedef Dart__u_char = int;
+typedef __u_short = ffi.UnsignedShort;
+typedef Dart__u_short = int;
+typedef __u_int = ffi.UnsignedInt;
+typedef Dart__u_int = int;
+typedef __u_long = ffi.UnsignedLong;
+typedef Dart__u_long = int;
 typedef __int8_t = ffi.SignedChar;
 typedef Dart__int8_t = int;
 typedef __uint8_t = ffi.UnsignedChar;
@@ -18224,271 +18122,266 @@ typedef __int32_t = ffi.Int;
 typedef Dart__int32_t = int;
 typedef __uint32_t = ffi.UnsignedInt;
 typedef Dart__uint32_t = int;
-typedef __int64_t = ffi.LongLong;
+typedef __int64_t = ffi.Long;
 typedef Dart__int64_t = int;
-typedef __uint64_t = ffi.UnsignedLongLong;
+typedef __uint64_t = ffi.UnsignedLong;
 typedef Dart__uint64_t = int;
-typedef __darwin_intptr_t = ffi.Long;
-typedef Dart__darwin_intptr_t = int;
-typedef __darwin_natural_t = ffi.UnsignedInt;
-typedef Dart__darwin_natural_t = int;
-typedef __darwin_ct_rune_t = ffi.Int;
-typedef Dart__darwin_ct_rune_t = int;
+typedef __int_least8_t = __int8_t;
+typedef __uint_least8_t = __uint8_t;
+typedef __int_least16_t = __int16_t;
+typedef __uint_least16_t = __uint16_t;
+typedef __int_least32_t = __int32_t;
+typedef __uint_least32_t = __uint32_t;
+typedef __int_least64_t = __int64_t;
+typedef __uint_least64_t = __uint64_t;
+typedef __quad_t = ffi.Long;
+typedef Dart__quad_t = int;
+typedef __u_quad_t = ffi.UnsignedLong;
+typedef Dart__u_quad_t = int;
+typedef __intmax_t = ffi.Long;
+typedef Dart__intmax_t = int;
+typedef __uintmax_t = ffi.UnsignedLong;
+typedef Dart__uintmax_t = int;
+typedef __dev_t = ffi.UnsignedLong;
+typedef Dart__dev_t = int;
+typedef __uid_t = ffi.UnsignedInt;
+typedef Dart__uid_t = int;
+typedef __gid_t = ffi.UnsignedInt;
+typedef Dart__gid_t = int;
+typedef __ino_t = ffi.UnsignedLong;
+typedef Dart__ino_t = int;
+typedef __ino64_t = ffi.UnsignedLong;
+typedef Dart__ino64_t = int;
+typedef __mode_t = ffi.UnsignedInt;
+typedef Dart__mode_t = int;
+typedef __nlink_t = ffi.UnsignedLong;
+typedef Dart__nlink_t = int;
+typedef __off_t = ffi.Long;
+typedef Dart__off_t = int;
+typedef __off64_t = ffi.Long;
+typedef Dart__off64_t = int;
+typedef __pid_t = ffi.Int;
+typedef Dart__pid_t = int;
 
-final class __mbstate_t extends ffi.Union {
-  @ffi.Array.multi([128])
-  external ffi.Array<ffi.Char> __mbstate8;
-
-  @ffi.LongLong()
-  external int _mbstateL;
+final class __fsid_t extends ffi.Struct {
+  @ffi.Array.multi([2])
+  external ffi.Array<ffi.Int> __val;
 }
 
-typedef __darwin_mbstate_t = __mbstate_t;
-typedef __darwin_ptrdiff_t = ffi.Long;
-typedef Dart__darwin_ptrdiff_t = int;
-typedef __darwin_size_t = ffi.UnsignedLong;
-typedef Dart__darwin_size_t = int;
-typedef __builtin_va_list = ffi.Pointer<ffi.Char>;
-typedef __darwin_va_list = __builtin_va_list;
-typedef __darwin_wchar_t = ffi.Int;
-typedef Dart__darwin_wchar_t = int;
-typedef __darwin_rune_t = __darwin_wchar_t;
-typedef __darwin_wint_t = ffi.Int;
-typedef Dart__darwin_wint_t = int;
-typedef __darwin_clock_t = ffi.UnsignedLong;
-typedef Dart__darwin_clock_t = int;
-typedef __darwin_socklen_t = __uint32_t;
-typedef __darwin_ssize_t = ffi.Long;
-typedef Dart__darwin_ssize_t = int;
-typedef __darwin_time_t = ffi.Long;
-typedef Dart__darwin_time_t = int;
-typedef __darwin_blkcnt_t = __int64_t;
-typedef __darwin_blksize_t = __int32_t;
-typedef __darwin_dev_t = __int32_t;
-typedef __darwin_fsblkcnt_t = ffi.UnsignedInt;
-typedef Dart__darwin_fsblkcnt_t = int;
-typedef __darwin_fsfilcnt_t = ffi.UnsignedInt;
-typedef Dart__darwin_fsfilcnt_t = int;
-typedef __darwin_gid_t = __uint32_t;
-typedef __darwin_id_t = __uint32_t;
-typedef __darwin_ino64_t = __uint64_t;
-typedef __darwin_ino_t = __darwin_ino64_t;
-typedef __darwin_mach_port_name_t = __darwin_natural_t;
-typedef __darwin_mach_port_t = __darwin_mach_port_name_t;
-typedef __darwin_mode_t = __uint16_t;
-typedef __darwin_off_t = __int64_t;
-typedef __darwin_pid_t = __int32_t;
-typedef __darwin_sigset_t = __uint32_t;
-typedef __darwin_suseconds_t = __int32_t;
-typedef __darwin_uid_t = __uint32_t;
-typedef __darwin_useconds_t = __uint32_t;
+typedef __clock_t = ffi.Long;
+typedef Dart__clock_t = int;
+typedef __rlim_t = ffi.UnsignedLong;
+typedef Dart__rlim_t = int;
+typedef __rlim64_t = ffi.UnsignedLong;
+typedef Dart__rlim64_t = int;
+typedef __id_t = ffi.UnsignedInt;
+typedef Dart__id_t = int;
+typedef __time_t = ffi.Long;
+typedef Dart__time_t = int;
+typedef __useconds_t = ffi.UnsignedInt;
+typedef Dart__useconds_t = int;
+typedef __suseconds_t = ffi.Long;
+typedef Dart__suseconds_t = int;
+typedef __suseconds64_t = ffi.Long;
+typedef Dart__suseconds64_t = int;
+typedef __daddr_t = ffi.Int;
+typedef Dart__daddr_t = int;
+typedef __key_t = ffi.Int;
+typedef Dart__key_t = int;
+typedef __clockid_t = ffi.Int;
+typedef Dart__clockid_t = int;
+typedef __timer_t = ffi.Pointer<ffi.Void>;
+typedef __blksize_t = ffi.Long;
+typedef Dart__blksize_t = int;
+typedef __blkcnt_t = ffi.Long;
+typedef Dart__blkcnt_t = int;
+typedef __blkcnt64_t = ffi.Long;
+typedef Dart__blkcnt64_t = int;
+typedef __fsblkcnt_t = ffi.UnsignedLong;
+typedef Dart__fsblkcnt_t = int;
+typedef __fsblkcnt64_t = ffi.UnsignedLong;
+typedef Dart__fsblkcnt64_t = int;
+typedef __fsfilcnt_t = ffi.UnsignedLong;
+typedef Dart__fsfilcnt_t = int;
+typedef __fsfilcnt64_t = ffi.UnsignedLong;
+typedef Dart__fsfilcnt64_t = int;
+typedef __fsword_t = ffi.Long;
+typedef Dart__fsword_t = int;
+typedef __ssize_t = ffi.Long;
+typedef Dart__ssize_t = int;
+typedef __syscall_slong_t = ffi.Long;
+typedef Dart__syscall_slong_t = int;
+typedef __syscall_ulong_t = ffi.UnsignedLong;
+typedef Dart__syscall_ulong_t = int;
+typedef __loff_t = __off64_t;
+typedef __caddr_t = ffi.Pointer<ffi.Char>;
+typedef __intptr_t = ffi.Long;
+typedef Dart__intptr_t = int;
+typedef __socklen_t = ffi.UnsignedInt;
+typedef Dart__socklen_t = int;
+typedef __sig_atomic_t = ffi.Int;
+typedef Dart__sig_atomic_t = int;
 
-final class __darwin_pthread_handler_rec extends ffi.Struct {
-  external ffi
-      .Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>
-      __routine;
+final class UnnamedUnion extends ffi.Union {
+  @ffi.UnsignedInt()
+  external int __wch;
 
-  external ffi.Pointer<ffi.Void> __arg;
-
-  external ffi.Pointer<__darwin_pthread_handler_rec> __next;
+  @ffi.Array.multi([4])
+  external ffi.Array<ffi.Char> __wchb;
 }
 
-final class _opaque_pthread_attr_t extends ffi.Struct {
-  @ffi.Long()
-  external int __sig;
-
-  @ffi.Array.multi([56])
-  external ffi.Array<ffi.Char> __opaque;
-}
-
-final class _opaque_pthread_cond_t extends ffi.Struct {
-  @ffi.Long()
-  external int __sig;
-
-  @ffi.Array.multi([40])
-  external ffi.Array<ffi.Char> __opaque;
-}
-
-final class _opaque_pthread_condattr_t extends ffi.Struct {
-  @ffi.Long()
-  external int __sig;
-
-  @ffi.Array.multi([8])
-  external ffi.Array<ffi.Char> __opaque;
-}
-
-final class _opaque_pthread_mutex_t extends ffi.Struct {
-  @ffi.Long()
-  external int __sig;
-
-  @ffi.Array.multi([56])
-  external ffi.Array<ffi.Char> __opaque;
-}
-
-final class _opaque_pthread_mutexattr_t extends ffi.Struct {
-  @ffi.Long()
-  external int __sig;
-
-  @ffi.Array.multi([8])
-  external ffi.Array<ffi.Char> __opaque;
-}
-
-final class _opaque_pthread_once_t extends ffi.Struct {
-  @ffi.Long()
-  external int __sig;
-
-  @ffi.Array.multi([8])
-  external ffi.Array<ffi.Char> __opaque;
-}
-
-final class _opaque_pthread_rwlock_t extends ffi.Struct {
-  @ffi.Long()
-  external int __sig;
-
-  @ffi.Array.multi([192])
-  external ffi.Array<ffi.Char> __opaque;
-}
-
-final class _opaque_pthread_rwlockattr_t extends ffi.Struct {
-  @ffi.Long()
-  external int __sig;
-
-  @ffi.Array.multi([16])
-  external ffi.Array<ffi.Char> __opaque;
-}
-
-final class _opaque_pthread_t extends ffi.Struct {
-  @ffi.Long()
-  external int __sig;
-
-  external ffi.Pointer<__darwin_pthread_handler_rec> __cleanup_stack;
-
-  @ffi.Array.multi([8176])
-  external ffi.Array<ffi.Char> __opaque;
-}
-
-typedef __darwin_pthread_attr_t = _opaque_pthread_attr_t;
-typedef __darwin_pthread_cond_t = _opaque_pthread_cond_t;
-typedef __darwin_pthread_condattr_t = _opaque_pthread_condattr_t;
-typedef __darwin_pthread_key_t = ffi.UnsignedLong;
-typedef Dart__darwin_pthread_key_t = int;
-typedef __darwin_pthread_mutex_t = _opaque_pthread_mutex_t;
-typedef __darwin_pthread_mutexattr_t = _opaque_pthread_mutexattr_t;
-typedef __darwin_pthread_once_t = _opaque_pthread_once_t;
-typedef __darwin_pthread_rwlock_t = _opaque_pthread_rwlock_t;
-typedef __darwin_pthread_rwlockattr_t = _opaque_pthread_rwlockattr_t;
-typedef __darwin_pthread_t = ffi.Pointer<_opaque_pthread_t>;
-typedef intmax_t = ffi.Long;
-typedef Dartintmax_t = int;
-typedef uintmax_t = ffi.UnsignedLong;
-typedef Dartuintmax_t = int;
-typedef __darwin_nl_item = ffi.Int;
-typedef Dart__darwin_nl_item = int;
-typedef __darwin_wctrans_t = ffi.Int;
-typedef Dart__darwin_wctrans_t = int;
-typedef __darwin_wctype_t = __uint32_t;
-typedef u_int8_t = ffi.UnsignedChar;
-typedef Dartu_int8_t = int;
-typedef u_int16_t = ffi.UnsignedShort;
-typedef Dartu_int16_t = int;
-typedef u_int32_t = ffi.UnsignedInt;
-typedef Dartu_int32_t = int;
-typedef u_int64_t = ffi.UnsignedLongLong;
-typedef Dartu_int64_t = int;
-typedef register_t = ffi.Int64;
-typedef Dartregister_t = int;
-typedef user_addr_t = u_int64_t;
-typedef user_size_t = u_int64_t;
-typedef user_ssize_t = ffi.Int64;
-typedef Dartuser_ssize_t = int;
-typedef user_long_t = ffi.Int64;
-typedef Dartuser_long_t = int;
-typedef user_ulong_t = u_int64_t;
-typedef user_time_t = ffi.Int64;
-typedef Dartuser_time_t = int;
-typedef user_off_t = ffi.Int64;
-typedef Dartuser_off_t = int;
-typedef syscall_arg_t = u_int64_t;
-typedef ptrdiff_t = __darwin_ptrdiff_t;
-typedef rsize_t = __darwin_size_t;
-typedef wint_t = __darwin_wint_t;
-typedef va_list = __darwin_va_list;
-typedef fpos_t = __darwin_off_t;
-
-final class __sbuf extends ffi.Struct {
-  external ffi.Pointer<ffi.UnsignedChar> _base;
-
+final class __mbstate_t extends ffi.Struct {
   @ffi.Int()
-  external int _size;
+  external int __count;
+
+  external UnnamedUnion __value;
 }
 
-final class __sFILEX extends ffi.Opaque {}
+final class _G_fpos_t extends ffi.Struct {
+  @__off_t()
+  external int __pos;
 
-final class __sFILE extends ffi.Struct {
-  external ffi.Pointer<ffi.UnsignedChar> _p;
+  external __mbstate_t __state;
+}
 
+typedef __fpos_t = _G_fpos_t;
+
+final class _G_fpos64_t extends ffi.Struct {
+  @__off64_t()
+  external int __pos;
+
+  external __mbstate_t __state;
+}
+
+typedef __fpos64_t = _G_fpos64_t;
+
+final class _IO_marker extends ffi.Opaque {}
+
+typedef _IO_lock_t = ffi.Void;
+typedef Dart_IO_lock_t = void;
+
+final class _IO_codecvt extends ffi.Opaque {}
+
+final class _IO_wide_data extends ffi.Opaque {}
+
+final class _IO_FILE extends ffi.Struct {
   @ffi.Int()
-  external int _r;
-
-  @ffi.Int()
-  external int _w;
-
-  @ffi.Short()
   external int _flags;
 
-  @ffi.Short()
-  external int _file;
+  external ffi.Pointer<ffi.Char> _IO_read_ptr;
 
-  external __sbuf _bf;
+  external ffi.Pointer<ffi.Char> _IO_read_end;
 
-  @ffi.Int()
-  external int _lbfsize;
+  external ffi.Pointer<ffi.Char> _IO_read_base;
 
-  external ffi.Pointer<ffi.Void> _cookie;
+  external ffi.Pointer<ffi.Char> _IO_write_base;
 
-  external ffi
-      .Pointer<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Void>)>>
-      _close;
+  external ffi.Pointer<ffi.Char> _IO_write_ptr;
 
-  external ffi.Pointer<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Char>, ffi.Int)>> _read;
+  external ffi.Pointer<ffi.Char> _IO_write_end;
 
-  external ffi.Pointer<
-      ffi.NativeFunction<
-          fpos_t Function(ffi.Pointer<ffi.Void>, fpos_t, ffi.Int)>> _seek;
+  external ffi.Pointer<ffi.Char> _IO_buf_base;
 
-  external ffi.Pointer<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Char>, ffi.Int)>> _write;
+  external ffi.Pointer<ffi.Char> _IO_buf_end;
 
-  external __sbuf _ub;
+  external ffi.Pointer<ffi.Char> _IO_save_base;
 
-  external ffi.Pointer<__sFILEX> _extra;
+  external ffi.Pointer<ffi.Char> _IO_backup_base;
+
+  external ffi.Pointer<ffi.Char> _IO_save_end;
+
+  external ffi.Pointer<_IO_marker> _markers;
+
+  external ffi.Pointer<_IO_FILE> _chain;
 
   @ffi.Int()
-  external int _ur;
+  external int _fileno;
 
-  @ffi.Array.multi([3])
-  external ffi.Array<ffi.UnsignedChar> _ubuf;
+  @ffi.Int()
+  external int _flags2;
+
+  @__off_t()
+  external int _old_offset;
+
+  @ffi.UnsignedShort()
+  external int _cur_column;
+
+  @ffi.SignedChar()
+  external int _vtable_offset;
 
   @ffi.Array.multi([1])
-  external ffi.Array<ffi.UnsignedChar> _nbuf;
+  external ffi.Array<ffi.Char> _shortbuf;
 
-  external __sbuf _lb;
+  external ffi.Pointer<_IO_lock_t> _lock;
+
+  @__off64_t()
+  external int _offset;
+
+  external ffi.Pointer<_IO_codecvt> _codecvt;
+
+  external ffi.Pointer<_IO_wide_data> _wide_data;
+
+  external ffi.Pointer<_IO_FILE> _freeres_list;
+
+  external ffi.Pointer<ffi.Void> _freeres_buf;
+
+  @ffi.Size()
+  external int __pad5;
 
   @ffi.Int()
-  external int _blksize;
+  external int _mode;
 
-  @fpos_t()
-  external int _offset;
+  @ffi.Array.multi([20])
+  external ffi.Array<ffi.Char> _unused2;
 }
 
-typedef FILE = __sFILE;
-typedef off_t = __darwin_off_t;
-typedef ssize_t = __darwin_ssize_t;
+typedef __FILE = _IO_FILE;
+typedef FILE = _IO_FILE;
+typedef cookie_read_function_t = ffi.NativeFunction<
+    __ssize_t Function(ffi.Pointer<ffi.Void> __cookie,
+        ffi.Pointer<ffi.Char> __buf, ffi.Size __nbytes)>;
+typedef cookie_write_function_t = ffi.NativeFunction<
+    __ssize_t Function(ffi.Pointer<ffi.Void> __cookie,
+        ffi.Pointer<ffi.Char> __buf, ffi.Size __nbytes)>;
+typedef cookie_seek_function_t = ffi.NativeFunction<
+    ffi.Int Function(ffi.Pointer<ffi.Void> __cookie,
+        ffi.Pointer<__off64_t> __pos, ffi.Int __w)>;
+typedef cookie_close_function_t
+    = ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Void> __cookie)>;
+
+final class _IO_cookie_io_functions_t extends ffi.Struct {
+  external ffi.Pointer<cookie_read_function_t> read;
+
+  external ffi.Pointer<cookie_write_function_t> write;
+
+  external ffi.Pointer<cookie_seek_function_t> seek;
+
+  external ffi.Pointer<cookie_close_function_t> close;
+}
+
+typedef cookie_io_functions_t = _IO_cookie_io_functions_t;
+typedef off_t = __off_t;
+typedef ssize_t = __ssize_t;
+typedef fpos_t = __fpos_t;
+
+final class __va_list_tag extends ffi.Struct {
+  @ffi.UnsignedInt()
+  external int gp_offset;
+
+  @ffi.UnsignedInt()
+  external int fp_offset;
+
+  external ffi.Pointer<ffi.Void> overflow_arg_area;
+
+  external ffi.Pointer<ffi.Void> reg_save_area;
+}
+
+typedef _Float32 = ffi.Float;
+typedef Dart_Float32 = double;
+typedef _Float64 = ffi.Double;
+typedef Dart_Float64 = double;
+typedef _Float32x = ffi.Double;
+typedef Dart_Float32x = double;
 typedef ggml_abort_callback_tFunction = ffi.Void Function(
     ffi.Pointer<ffi.Char> error_message);
 typedef Dartggml_abort_callback_tFunction = void Function(
@@ -20198,7 +20091,7 @@ enum llama_model_meta_key {
       };
 }
 
-final class UnnamedUnion extends ffi.Union {
+final class UnnamedUnion$1 extends ffi.Union {
   @ffi.Int64()
   external int val_i64;
 
@@ -20222,7 +20115,7 @@ final class llama_model_kv_override extends ffi.Struct {
   @ffi.Array.multi([128])
   external ffi.Array<ffi.Char> key;
 
-  external UnnamedUnion unnamed;
+  external UnnamedUnion$1 unnamed;
 }
 
 final class llama_model_tensor_buft_override extends ffi.Struct {
@@ -20611,1161 +20504,147 @@ final class mtmd_context_params extends ffi.Struct {
   external ffi.Pointer<ffi.Void> cb_eval_user_data;
 }
 
-const int __WORDSIZE = 64;
-
-const int __has_safe_buffers = 1;
-
-const int __DARWIN_ONLY_64_BIT_INO_T = 1;
-
-const int __DARWIN_ONLY_UNIX_CONFORMANCE = 1;
-
-const int __DARWIN_ONLY_VERS_1050 = 1;
-
-const int __DARWIN_UNIX03 = 1;
-
-const int __DARWIN_64_BIT_INO_T = 1;
-
-const int __DARWIN_VERS_1050 = 1;
-
-const int __DARWIN_NON_CANCELABLE = 0;
-
-const String __DARWIN_SUF_EXTSN = '\$DARWIN_EXTSN';
-
-const int __DARWIN_C_ANSI = 4096;
-
-const int __DARWIN_C_FULL = 900000;
-
-const int __DARWIN_C_LEVEL = 900000;
-
-const int __STDC_WANT_LIB_EXT1__ = 1;
-
-const int __DARWIN_NO_LONG_LONG = 0;
-
-const int _DARWIN_FEATURE_64_BIT_INODE = 1;
-
-const int _DARWIN_FEATURE_ONLY_64_BIT_INODE = 1;
-
-const int _DARWIN_FEATURE_ONLY_VERS_1050 = 1;
-
-const int _DARWIN_FEATURE_ONLY_UNIX_CONFORMANCE = 1;
-
-const int _DARWIN_FEATURE_UNIX_CONFORMANCE = 3;
-
-const int __has_ptrcheck = 0;
-
-const int __has_bounds_safety_attributes = 0;
-
-const int __DARWIN_NULL = 0;
-
-const int __PTHREAD_SIZE__ = 8176;
-
-const int __PTHREAD_ATTR_SIZE__ = 56;
-
-const int __PTHREAD_MUTEXATTR_SIZE__ = 8;
-
-const int __PTHREAD_MUTEX_SIZE__ = 56;
-
-const int __PTHREAD_CONDATTR_SIZE__ = 8;
-
-const int __PTHREAD_COND_SIZE__ = 40;
-
-const int __PTHREAD_ONCE_SIZE__ = 8;
-
-const int __PTHREAD_RWLOCK_SIZE__ = 192;
-
-const int __PTHREAD_RWLOCKATTR_SIZE__ = 16;
-
-const int INT8_MAX = 127;
-
-const int INT16_MAX = 32767;
-
-const int INT32_MAX = 2147483647;
-
-const int INT64_MAX = 9223372036854775807;
-
-const int INT8_MIN = -128;
-
-const int INT16_MIN = -32768;
-
-const int INT32_MIN = -2147483648;
-
-const int INT64_MIN = -9223372036854775808;
-
-const int UINT8_MAX = 255;
-
-const int UINT16_MAX = 65535;
-
-const int UINT32_MAX = 4294967295;
-
-const int UINT64_MAX = -1;
-
-const int INT_LEAST8_MIN = -128;
-
-const int INT_LEAST16_MIN = -32768;
-
-const int INT_LEAST32_MIN = -2147483648;
-
-const int INT_LEAST64_MIN = -9223372036854775808;
-
-const int INT_LEAST8_MAX = 127;
-
-const int INT_LEAST16_MAX = 32767;
-
-const int INT_LEAST32_MAX = 2147483647;
-
-const int INT_LEAST64_MAX = 9223372036854775807;
-
-const int UINT_LEAST8_MAX = 255;
-
-const int UINT_LEAST16_MAX = 65535;
-
-const int UINT_LEAST32_MAX = 4294967295;
-
-const int UINT_LEAST64_MAX = -1;
-
-const int INT_FAST8_MIN = -128;
-
-const int INT_FAST16_MIN = -32768;
-
-const int INT_FAST32_MIN = -2147483648;
-
-const int INT_FAST64_MIN = -9223372036854775808;
-
-const int INT_FAST8_MAX = 127;
-
-const int INT_FAST16_MAX = 32767;
-
-const int INT_FAST32_MAX = 2147483647;
-
-const int INT_FAST64_MAX = 9223372036854775807;
-
-const int UINT_FAST8_MAX = 255;
-
-const int UINT_FAST16_MAX = 65535;
-
-const int UINT_FAST32_MAX = 4294967295;
-
-const int UINT_FAST64_MAX = -1;
-
-const int INTPTR_MAX = 9223372036854775807;
-
-const int INTPTR_MIN = -9223372036854775808;
-
-const int UINTPTR_MAX = -1;
-
-const int INTMAX_MAX = 9223372036854775807;
-
-const int UINTMAX_MAX = -1;
-
-const int INTMAX_MIN = -9223372036854775808;
-
-const int PTRDIFF_MIN = -9223372036854775808;
-
-const int PTRDIFF_MAX = 9223372036854775807;
-
-const int SIZE_MAX = -1;
-
-const int RSIZE_MAX = 9223372036854775807;
-
-const int WCHAR_MAX = 2147483647;
-
-const int WCHAR_MIN = -2147483648;
-
-const int WINT_MIN = -2147483648;
-
-const int WINT_MAX = 2147483647;
-
-const int SIG_ATOMIC_MIN = -2147483648;
-
-const int SIG_ATOMIC_MAX = 2147483647;
-
 const int __bool_true_false_are_defined = 1;
 
 const int true$ = 1;
 
 const int false$ = 0;
 
-const int __DARWIN_WCHAR_MAX = 2147483647;
-
-const int __DARWIN_WCHAR_MIN = -2147483648;
-
-const int __DARWIN_WEOF = -1;
-
-const int _FORTIFY_SOURCE = 2;
-
 const int NULL = 0;
 
-const int USER_ADDR_NULL = 0;
+const int _STDIO_H = 1;
 
-const int __API_TO_BE_DEPRECATED = 100000;
+const int _FEATURES_H = 1;
 
-const int __API_TO_BE_DEPRECATED_MACOS = 100000;
+const int _DEFAULT_SOURCE = 1;
 
-const int __API_TO_BE_DEPRECATED_MACOSAPPLICATIONEXTENSION = 100000;
+const int __GLIBC_USE_ISOC2X = 1;
 
-const int __API_TO_BE_DEPRECATED_IOS = 100000;
+const int __USE_ISOC11 = 1;
 
-const int __API_TO_BE_DEPRECATED_IOSAPPLICATIONEXTENSION = 100000;
+const int __USE_ISOC99 = 1;
 
-const int __API_TO_BE_DEPRECATED_MACCATALYST = 100000;
+const int __USE_ISOC95 = 1;
 
-const int __API_TO_BE_DEPRECATED_MACCATALYSTAPPLICATIONEXTENSION = 100000;
+const int _POSIX_SOURCE = 1;
 
-const int __API_TO_BE_DEPRECATED_WATCHOS = 100000;
+const int _POSIX_C_SOURCE = 200809;
 
-const int __API_TO_BE_DEPRECATED_WATCHOSAPPLICATIONEXTENSION = 100000;
+const int __USE_POSIX = 1;
 
-const int __API_TO_BE_DEPRECATED_TVOS = 100000;
+const int __USE_POSIX2 = 1;
 
-const int __API_TO_BE_DEPRECATED_TVOSAPPLICATIONEXTENSION = 100000;
+const int __USE_POSIX199309 = 1;
 
-const int __API_TO_BE_DEPRECATED_DRIVERKIT = 100000;
+const int __USE_POSIX199506 = 1;
 
-const int __API_TO_BE_DEPRECATED_VISIONOS = 100000;
+const int __USE_XOPEN2K = 1;
 
-const int __API_TO_BE_DEPRECATED_VISIONOSAPPLICATIONEXTENSION = 100000;
+const int __USE_XOPEN2K8 = 1;
 
-const int __API_TO_BE_DEPRECATED_KERNELKIT = 100000;
+const int _ATFILE_SOURCE = 1;
 
-const int __MAC_10_0 = 1000;
+const int __WORDSIZE = 64;
 
-const int __MAC_10_1 = 1010;
+const int __WORDSIZE_TIME64_COMPAT32 = 1;
 
-const int __MAC_10_2 = 1020;
+const int __SYSCALL_WORDSIZE = 64;
 
-const int __MAC_10_3 = 1030;
+const int __TIMESIZE = 64;
 
-const int __MAC_10_4 = 1040;
+const int __USE_MISC = 1;
 
-const int __MAC_10_5 = 1050;
+const int __USE_ATFILE = 1;
 
-const int __MAC_10_6 = 1060;
+const int __USE_FORTIFY_LEVEL = 0;
 
-const int __MAC_10_7 = 1070;
+const int __GLIBC_USE_DEPRECATED_GETS = 0;
 
-const int __MAC_10_8 = 1080;
+const int __GLIBC_USE_DEPRECATED_SCANF = 0;
 
-const int __MAC_10_9 = 1090;
+const int __GLIBC_USE_C2X_STRTOL = 1;
 
-const int __MAC_10_10 = 101000;
+const int _STDC_PREDEF_H = 1;
 
-const int __MAC_10_10_2 = 101002;
+const int __STDC_IEC_559__ = 1;
 
-const int __MAC_10_10_3 = 101003;
+const int __STDC_IEC_60559_BFP__ = 201404;
 
-const int __MAC_10_11 = 101100;
+const int __STDC_IEC_559_COMPLEX__ = 1;
 
-const int __MAC_10_11_2 = 101102;
+const int __STDC_IEC_60559_COMPLEX__ = 201404;
 
-const int __MAC_10_11_3 = 101103;
+const int __STDC_ISO_10646__ = 201706;
 
-const int __MAC_10_11_4 = 101104;
+const int __GNU_LIBRARY__ = 6;
 
-const int __MAC_10_12 = 101200;
+const int __GLIBC__ = 2;
 
-const int __MAC_10_12_1 = 101201;
+const int __GLIBC_MINOR__ = 39;
 
-const int __MAC_10_12_2 = 101202;
+const int _SYS_CDEFS_H = 1;
 
-const int __MAC_10_12_4 = 101204;
+const int __THROW = 1;
 
-const int __MAC_10_13 = 101300;
+const int __THROWNL = 1;
 
-const int __MAC_10_13_1 = 101301;
+const int __glibc_c99_flexarr_available = 1;
 
-const int __MAC_10_13_2 = 101302;
+const int __LDOUBLE_REDIRECTS_TO_FLOAT128_ABI = 0;
 
-const int __MAC_10_13_4 = 101304;
+const int __HAVE_GENERIC_SELECTION = 0;
 
-const int __MAC_10_14 = 101400;
+const int __GLIBC_USE_LIB_EXT2 = 1;
 
-const int __MAC_10_14_1 = 101401;
+const int __GLIBC_USE_IEC_60559_BFP_EXT = 1;
 
-const int __MAC_10_14_4 = 101404;
+const int __GLIBC_USE_IEC_60559_BFP_EXT_C2X = 1;
 
-const int __MAC_10_14_5 = 101405;
+const int __GLIBC_USE_IEC_60559_EXT = 1;
 
-const int __MAC_10_14_6 = 101406;
+const int __GLIBC_USE_IEC_60559_FUNCS_EXT = 1;
 
-const int __MAC_10_15 = 101500;
+const int __GLIBC_USE_IEC_60559_FUNCS_EXT_C2X = 1;
 
-const int __MAC_10_15_1 = 101501;
+const int __GLIBC_USE_IEC_60559_TYPES_EXT = 1;
 
-const int __MAC_10_15_4 = 101504;
+const int _BITS_TYPES_H = 1;
 
-const int __MAC_10_16 = 101600;
+const int _BITS_TYPESIZES_H = 1;
 
-const int __MAC_11_0 = 110000;
+const int __OFF_T_MATCHES_OFF64_T = 1;
 
-const int __MAC_11_1 = 110100;
+const int __INO_T_MATCHES_INO64_T = 1;
 
-const int __MAC_11_3 = 110300;
+const int __RLIM_T_MATCHES_RLIM64_T = 1;
 
-const int __MAC_11_4 = 110400;
+const int __STATFS_MATCHES_STATFS64 = 1;
 
-const int __MAC_11_5 = 110500;
+const int __KERNEL_OLD_TIMEVAL_MATCHES_TIMEVAL64 = 1;
 
-const int __MAC_11_6 = 110600;
+const int __FD_SETSIZE = 1024;
 
-const int __MAC_12_0 = 120000;
+const int _BITS_TIME64_H = 1;
 
-const int __MAC_12_1 = 120100;
+const int _____fpos_t_defined = 1;
 
-const int __MAC_12_2 = 120200;
+const int ____mbstate_t_defined = 1;
 
-const int __MAC_12_3 = 120300;
+const int _____fpos64_t_defined = 1;
 
-const int __MAC_12_4 = 120400;
+const int ____FILE_defined = 1;
 
-const int __MAC_12_5 = 120500;
+const int __FILE_defined = 1;
 
-const int __MAC_12_6 = 120600;
+const int __struct_FILE_defined = 1;
 
-const int __MAC_12_7 = 120700;
+const int _IO_EOF_SEEN = 16;
 
-const int __MAC_13_0 = 130000;
+const int _IO_ERR_SEEN = 32;
 
-const int __MAC_13_1 = 130100;
+const int _IO_USER_LOCK = 32768;
 
-const int __MAC_13_2 = 130200;
-
-const int __MAC_13_3 = 130300;
-
-const int __MAC_13_4 = 130400;
-
-const int __MAC_13_5 = 130500;
-
-const int __MAC_13_6 = 130600;
-
-const int __MAC_13_7 = 130700;
-
-const int __MAC_14_0 = 140000;
-
-const int __MAC_14_1 = 140100;
-
-const int __MAC_14_2 = 140200;
-
-const int __MAC_14_3 = 140300;
-
-const int __MAC_14_4 = 140400;
-
-const int __MAC_14_5 = 140500;
-
-const int __MAC_14_6 = 140600;
-
-const int __MAC_14_7 = 140700;
-
-const int __MAC_15_0 = 150000;
-
-const int __MAC_15_1 = 150100;
-
-const int __MAC_15_2 = 150200;
-
-const int __MAC_15_3 = 150300;
-
-const int __MAC_15_4 = 150400;
-
-const int __MAC_15_5 = 150500;
-
-const int __MAC_15_6 = 150600;
-
-const int __MAC_16_0 = 160000;
-
-const int __MAC_26_0 = 260000;
-
-const int __MAC_26_1 = 260100;
-
-const int __MAC_26_2 = 260200;
-
-const int __IPHONE_2_0 = 20000;
-
-const int __IPHONE_2_1 = 20100;
-
-const int __IPHONE_2_2 = 20200;
-
-const int __IPHONE_3_0 = 30000;
-
-const int __IPHONE_3_1 = 30100;
-
-const int __IPHONE_3_2 = 30200;
-
-const int __IPHONE_4_0 = 40000;
-
-const int __IPHONE_4_1 = 40100;
-
-const int __IPHONE_4_2 = 40200;
-
-const int __IPHONE_4_3 = 40300;
-
-const int __IPHONE_5_0 = 50000;
-
-const int __IPHONE_5_1 = 50100;
-
-const int __IPHONE_6_0 = 60000;
-
-const int __IPHONE_6_1 = 60100;
-
-const int __IPHONE_7_0 = 70000;
-
-const int __IPHONE_7_1 = 70100;
-
-const int __IPHONE_8_0 = 80000;
-
-const int __IPHONE_8_1 = 80100;
-
-const int __IPHONE_8_2 = 80200;
-
-const int __IPHONE_8_3 = 80300;
-
-const int __IPHONE_8_4 = 80400;
-
-const int __IPHONE_9_0 = 90000;
-
-const int __IPHONE_9_1 = 90100;
-
-const int __IPHONE_9_2 = 90200;
-
-const int __IPHONE_9_3 = 90300;
-
-const int __IPHONE_10_0 = 100000;
-
-const int __IPHONE_10_1 = 100100;
-
-const int __IPHONE_10_2 = 100200;
-
-const int __IPHONE_10_3 = 100300;
-
-const int __IPHONE_11_0 = 110000;
-
-const int __IPHONE_11_1 = 110100;
-
-const int __IPHONE_11_2 = 110200;
-
-const int __IPHONE_11_3 = 110300;
-
-const int __IPHONE_11_4 = 110400;
-
-const int __IPHONE_12_0 = 120000;
-
-const int __IPHONE_12_1 = 120100;
-
-const int __IPHONE_12_2 = 120200;
-
-const int __IPHONE_12_3 = 120300;
-
-const int __IPHONE_12_4 = 120400;
-
-const int __IPHONE_13_0 = 130000;
-
-const int __IPHONE_13_1 = 130100;
-
-const int __IPHONE_13_2 = 130200;
-
-const int __IPHONE_13_3 = 130300;
-
-const int __IPHONE_13_4 = 130400;
-
-const int __IPHONE_13_5 = 130500;
-
-const int __IPHONE_13_6 = 130600;
-
-const int __IPHONE_13_7 = 130700;
-
-const int __IPHONE_14_0 = 140000;
-
-const int __IPHONE_14_1 = 140100;
-
-const int __IPHONE_14_2 = 140200;
-
-const int __IPHONE_14_3 = 140300;
-
-const int __IPHONE_14_5 = 140500;
-
-const int __IPHONE_14_6 = 140600;
-
-const int __IPHONE_14_7 = 140700;
-
-const int __IPHONE_14_8 = 140800;
-
-const int __IPHONE_15_0 = 150000;
-
-const int __IPHONE_15_1 = 150100;
-
-const int __IPHONE_15_2 = 150200;
-
-const int __IPHONE_15_3 = 150300;
-
-const int __IPHONE_15_4 = 150400;
-
-const int __IPHONE_15_5 = 150500;
-
-const int __IPHONE_15_6 = 150600;
-
-const int __IPHONE_15_7 = 150700;
-
-const int __IPHONE_15_8 = 150800;
-
-const int __IPHONE_16_0 = 160000;
-
-const int __IPHONE_16_1 = 160100;
-
-const int __IPHONE_16_2 = 160200;
-
-const int __IPHONE_16_3 = 160300;
-
-const int __IPHONE_16_4 = 160400;
-
-const int __IPHONE_16_5 = 160500;
-
-const int __IPHONE_16_6 = 160600;
-
-const int __IPHONE_16_7 = 160700;
-
-const int __IPHONE_17_0 = 170000;
-
-const int __IPHONE_17_1 = 170100;
-
-const int __IPHONE_17_2 = 170200;
-
-const int __IPHONE_17_3 = 170300;
-
-const int __IPHONE_17_4 = 170400;
-
-const int __IPHONE_17_5 = 170500;
-
-const int __IPHONE_17_6 = 170600;
-
-const int __IPHONE_17_7 = 170700;
-
-const int __IPHONE_18_0 = 180000;
-
-const int __IPHONE_18_1 = 180100;
-
-const int __IPHONE_18_2 = 180200;
-
-const int __IPHONE_18_3 = 180300;
-
-const int __IPHONE_18_4 = 180400;
-
-const int __IPHONE_18_5 = 180500;
-
-const int __IPHONE_18_6 = 180600;
-
-const int __IPHONE_19_0 = 190000;
-
-const int __IPHONE_26_0 = 260000;
-
-const int __IPHONE_26_1 = 260100;
-
-const int __IPHONE_26_2 = 260200;
-
-const int __WATCHOS_1_0 = 10000;
-
-const int __WATCHOS_2_0 = 20000;
-
-const int __WATCHOS_2_1 = 20100;
-
-const int __WATCHOS_2_2 = 20200;
-
-const int __WATCHOS_3_0 = 30000;
-
-const int __WATCHOS_3_1 = 30100;
-
-const int __WATCHOS_3_1_1 = 30101;
-
-const int __WATCHOS_3_2 = 30200;
-
-const int __WATCHOS_4_0 = 40000;
-
-const int __WATCHOS_4_1 = 40100;
-
-const int __WATCHOS_4_2 = 40200;
-
-const int __WATCHOS_4_3 = 40300;
-
-const int __WATCHOS_5_0 = 50000;
-
-const int __WATCHOS_5_1 = 50100;
-
-const int __WATCHOS_5_2 = 50200;
-
-const int __WATCHOS_5_3 = 50300;
-
-const int __WATCHOS_6_0 = 60000;
-
-const int __WATCHOS_6_1 = 60100;
-
-const int __WATCHOS_6_2 = 60200;
-
-const int __WATCHOS_7_0 = 70000;
-
-const int __WATCHOS_7_1 = 70100;
-
-const int __WATCHOS_7_2 = 70200;
-
-const int __WATCHOS_7_3 = 70300;
-
-const int __WATCHOS_7_4 = 70400;
-
-const int __WATCHOS_7_5 = 70500;
-
-const int __WATCHOS_7_6 = 70600;
-
-const int __WATCHOS_8_0 = 80000;
-
-const int __WATCHOS_8_1 = 80100;
-
-const int __WATCHOS_8_3 = 80300;
-
-const int __WATCHOS_8_4 = 80400;
-
-const int __WATCHOS_8_5 = 80500;
-
-const int __WATCHOS_8_6 = 80600;
-
-const int __WATCHOS_8_7 = 80700;
-
-const int __WATCHOS_8_8 = 80800;
-
-const int __WATCHOS_9_0 = 90000;
-
-const int __WATCHOS_9_1 = 90100;
-
-const int __WATCHOS_9_2 = 90200;
-
-const int __WATCHOS_9_3 = 90300;
-
-const int __WATCHOS_9_4 = 90400;
-
-const int __WATCHOS_9_5 = 90500;
-
-const int __WATCHOS_9_6 = 90600;
-
-const int __WATCHOS_10_0 = 100000;
-
-const int __WATCHOS_10_1 = 100100;
-
-const int __WATCHOS_10_2 = 100200;
-
-const int __WATCHOS_10_3 = 100300;
-
-const int __WATCHOS_10_4 = 100400;
-
-const int __WATCHOS_10_5 = 100500;
-
-const int __WATCHOS_10_6 = 100600;
-
-const int __WATCHOS_10_7 = 100700;
-
-const int __WATCHOS_11_0 = 110000;
-
-const int __WATCHOS_11_1 = 110100;
-
-const int __WATCHOS_11_2 = 110200;
-
-const int __WATCHOS_11_3 = 110300;
-
-const int __WATCHOS_11_4 = 110400;
-
-const int __WATCHOS_11_5 = 110500;
-
-const int __WATCHOS_11_6 = 110600;
-
-const int __WATCHOS_12_0 = 120000;
-
-const int __WATCHOS_26_0 = 260000;
-
-const int __WATCHOS_26_1 = 260100;
-
-const int __WATCHOS_26_2 = 260200;
-
-const int __TVOS_9_0 = 90000;
-
-const int __TVOS_9_1 = 90100;
-
-const int __TVOS_9_2 = 90200;
-
-const int __TVOS_10_0 = 100000;
-
-const int __TVOS_10_0_1 = 100001;
-
-const int __TVOS_10_1 = 100100;
-
-const int __TVOS_10_2 = 100200;
-
-const int __TVOS_11_0 = 110000;
-
-const int __TVOS_11_1 = 110100;
-
-const int __TVOS_11_2 = 110200;
-
-const int __TVOS_11_3 = 110300;
-
-const int __TVOS_11_4 = 110400;
-
-const int __TVOS_12_0 = 120000;
-
-const int __TVOS_12_1 = 120100;
-
-const int __TVOS_12_2 = 120200;
-
-const int __TVOS_12_3 = 120300;
-
-const int __TVOS_12_4 = 120400;
-
-const int __TVOS_13_0 = 130000;
-
-const int __TVOS_13_2 = 130200;
-
-const int __TVOS_13_3 = 130300;
-
-const int __TVOS_13_4 = 130400;
-
-const int __TVOS_14_0 = 140000;
-
-const int __TVOS_14_1 = 140100;
-
-const int __TVOS_14_2 = 140200;
-
-const int __TVOS_14_3 = 140300;
-
-const int __TVOS_14_5 = 140500;
-
-const int __TVOS_14_6 = 140600;
-
-const int __TVOS_14_7 = 140700;
-
-const int __TVOS_15_0 = 150000;
-
-const int __TVOS_15_1 = 150100;
-
-const int __TVOS_15_2 = 150200;
-
-const int __TVOS_15_3 = 150300;
-
-const int __TVOS_15_4 = 150400;
-
-const int __TVOS_15_5 = 150500;
-
-const int __TVOS_15_6 = 150600;
-
-const int __TVOS_16_0 = 160000;
-
-const int __TVOS_16_1 = 160100;
-
-const int __TVOS_16_2 = 160200;
-
-const int __TVOS_16_3 = 160300;
-
-const int __TVOS_16_4 = 160400;
-
-const int __TVOS_16_5 = 160500;
-
-const int __TVOS_16_6 = 160600;
-
-const int __TVOS_17_0 = 170000;
-
-const int __TVOS_17_1 = 170100;
-
-const int __TVOS_17_2 = 170200;
-
-const int __TVOS_17_3 = 170300;
-
-const int __TVOS_17_4 = 170400;
-
-const int __TVOS_17_5 = 170500;
-
-const int __TVOS_17_6 = 170600;
-
-const int __TVOS_18_0 = 180000;
-
-const int __TVOS_18_1 = 180100;
-
-const int __TVOS_18_2 = 180200;
-
-const int __TVOS_18_3 = 180300;
-
-const int __TVOS_18_4 = 180400;
-
-const int __TVOS_18_5 = 180500;
-
-const int __TVOS_18_6 = 180600;
-
-const int __TVOS_19_0 = 190000;
-
-const int __TVOS_26_0 = 260000;
-
-const int __TVOS_26_1 = 260100;
-
-const int __TVOS_26_2 = 260200;
-
-const int __BRIDGEOS_2_0 = 20000;
-
-const int __BRIDGEOS_3_0 = 30000;
-
-const int __BRIDGEOS_3_1 = 30100;
-
-const int __BRIDGEOS_3_4 = 30400;
-
-const int __BRIDGEOS_4_0 = 40000;
-
-const int __BRIDGEOS_4_1 = 40100;
-
-const int __BRIDGEOS_5_0 = 50000;
-
-const int __BRIDGEOS_5_1 = 50100;
-
-const int __BRIDGEOS_5_3 = 50300;
-
-const int __BRIDGEOS_6_0 = 60000;
-
-const int __BRIDGEOS_6_2 = 60200;
-
-const int __BRIDGEOS_6_4 = 60400;
-
-const int __BRIDGEOS_6_5 = 60500;
-
-const int __BRIDGEOS_6_6 = 60600;
-
-const int __BRIDGEOS_7_0 = 70000;
-
-const int __BRIDGEOS_7_1 = 70100;
-
-const int __BRIDGEOS_7_2 = 70200;
-
-const int __BRIDGEOS_7_3 = 70300;
-
-const int __BRIDGEOS_7_4 = 70400;
-
-const int __BRIDGEOS_7_6 = 70600;
-
-const int __BRIDGEOS_8_0 = 80000;
-
-const int __BRIDGEOS_8_1 = 80100;
-
-const int __BRIDGEOS_8_2 = 80200;
-
-const int __BRIDGEOS_8_3 = 80300;
-
-const int __BRIDGEOS_8_4 = 80400;
-
-const int __BRIDGEOS_8_5 = 80500;
-
-const int __BRIDGEOS_8_6 = 80600;
-
-const int __BRIDGEOS_9_0 = 90000;
-
-const int __BRIDGEOS_9_1 = 90100;
-
-const int __BRIDGEOS_9_2 = 90200;
-
-const int __BRIDGEOS_9_3 = 90300;
-
-const int __BRIDGEOS_9_4 = 90400;
-
-const int __BRIDGEOS_9_5 = 90500;
-
-const int __BRIDGEOS_9_6 = 90600;
-
-const int __BRIDGEOS_10_0 = 100000;
-
-const int __BRIDGEOS_10_1 = 100100;
-
-const int __BRIDGEOS_10_2 = 100200;
-
-const int __DRIVERKIT_19_0 = 190000;
-
-const int __DRIVERKIT_20_0 = 200000;
-
-const int __DRIVERKIT_21_0 = 210000;
-
-const int __DRIVERKIT_22_0 = 220000;
-
-const int __DRIVERKIT_22_4 = 220400;
-
-const int __DRIVERKIT_22_5 = 220500;
-
-const int __DRIVERKIT_22_6 = 220600;
-
-const int __DRIVERKIT_23_0 = 230000;
-
-const int __DRIVERKIT_23_1 = 230100;
-
-const int __DRIVERKIT_23_2 = 230200;
-
-const int __DRIVERKIT_23_3 = 230300;
-
-const int __DRIVERKIT_23_4 = 230400;
-
-const int __DRIVERKIT_23_5 = 230500;
-
-const int __DRIVERKIT_23_6 = 230600;
-
-const int __DRIVERKIT_24_0 = 240000;
-
-const int __DRIVERKIT_24_1 = 240100;
-
-const int __DRIVERKIT_24_2 = 240200;
-
-const int __DRIVERKIT_24_3 = 240300;
-
-const int __DRIVERKIT_24_4 = 240400;
-
-const int __DRIVERKIT_24_5 = 240500;
-
-const int __DRIVERKIT_24_6 = 240600;
-
-const int __DRIVERKIT_25_0 = 250000;
-
-const int __DRIVERKIT_25_1 = 250100;
-
-const int __DRIVERKIT_25_2 = 250200;
-
-const int __VISIONOS_1_0 = 10000;
-
-const int __VISIONOS_1_1 = 10100;
-
-const int __VISIONOS_1_2 = 10200;
-
-const int __VISIONOS_1_3 = 10300;
-
-const int __VISIONOS_2_0 = 20000;
-
-const int __VISIONOS_2_1 = 20100;
-
-const int __VISIONOS_2_2 = 20200;
-
-const int __VISIONOS_2_3 = 20300;
-
-const int __VISIONOS_2_4 = 20400;
-
-const int __VISIONOS_2_5 = 20500;
-
-const int __VISIONOS_2_6 = 20600;
-
-const int __VISIONOS_3_0 = 30000;
-
-const int __VISIONOS_26_0 = 260000;
-
-const int __VISIONOS_26_1 = 260100;
-
-const int __VISIONOS_26_2 = 260200;
-
-const int MAC_OS_X_VERSION_10_0 = 1000;
-
-const int MAC_OS_X_VERSION_10_1 = 1010;
-
-const int MAC_OS_X_VERSION_10_2 = 1020;
-
-const int MAC_OS_X_VERSION_10_3 = 1030;
-
-const int MAC_OS_X_VERSION_10_4 = 1040;
-
-const int MAC_OS_X_VERSION_10_5 = 1050;
-
-const int MAC_OS_X_VERSION_10_6 = 1060;
-
-const int MAC_OS_X_VERSION_10_7 = 1070;
-
-const int MAC_OS_X_VERSION_10_8 = 1080;
-
-const int MAC_OS_X_VERSION_10_9 = 1090;
-
-const int MAC_OS_X_VERSION_10_10 = 101000;
-
-const int MAC_OS_X_VERSION_10_10_2 = 101002;
-
-const int MAC_OS_X_VERSION_10_10_3 = 101003;
-
-const int MAC_OS_X_VERSION_10_11 = 101100;
-
-const int MAC_OS_X_VERSION_10_11_2 = 101102;
-
-const int MAC_OS_X_VERSION_10_11_3 = 101103;
-
-const int MAC_OS_X_VERSION_10_11_4 = 101104;
-
-const int MAC_OS_X_VERSION_10_12 = 101200;
-
-const int MAC_OS_X_VERSION_10_12_1 = 101201;
-
-const int MAC_OS_X_VERSION_10_12_2 = 101202;
-
-const int MAC_OS_X_VERSION_10_12_4 = 101204;
-
-const int MAC_OS_X_VERSION_10_13 = 101300;
-
-const int MAC_OS_X_VERSION_10_13_1 = 101301;
-
-const int MAC_OS_X_VERSION_10_13_2 = 101302;
-
-const int MAC_OS_X_VERSION_10_13_4 = 101304;
-
-const int MAC_OS_X_VERSION_10_14 = 101400;
-
-const int MAC_OS_X_VERSION_10_14_1 = 101401;
-
-const int MAC_OS_X_VERSION_10_14_4 = 101404;
-
-const int MAC_OS_X_VERSION_10_14_5 = 101405;
-
-const int MAC_OS_X_VERSION_10_14_6 = 101406;
-
-const int MAC_OS_X_VERSION_10_15 = 101500;
-
-const int MAC_OS_X_VERSION_10_15_1 = 101501;
-
-const int MAC_OS_X_VERSION_10_15_4 = 101504;
-
-const int MAC_OS_X_VERSION_10_16 = 101600;
-
-const int MAC_OS_VERSION_11_0 = 110000;
-
-const int MAC_OS_VERSION_11_1 = 110100;
-
-const int MAC_OS_VERSION_11_3 = 110300;
-
-const int MAC_OS_VERSION_11_4 = 110400;
-
-const int MAC_OS_VERSION_11_5 = 110500;
-
-const int MAC_OS_VERSION_11_6 = 110600;
-
-const int MAC_OS_VERSION_12_0 = 120000;
-
-const int MAC_OS_VERSION_12_1 = 120100;
-
-const int MAC_OS_VERSION_12_2 = 120200;
-
-const int MAC_OS_VERSION_12_3 = 120300;
-
-const int MAC_OS_VERSION_12_4 = 120400;
-
-const int MAC_OS_VERSION_12_5 = 120500;
-
-const int MAC_OS_VERSION_12_6 = 120600;
-
-const int MAC_OS_VERSION_12_7 = 120700;
-
-const int MAC_OS_VERSION_13_0 = 130000;
-
-const int MAC_OS_VERSION_13_1 = 130100;
-
-const int MAC_OS_VERSION_13_2 = 130200;
-
-const int MAC_OS_VERSION_13_3 = 130300;
-
-const int MAC_OS_VERSION_13_4 = 130400;
-
-const int MAC_OS_VERSION_13_5 = 130500;
-
-const int MAC_OS_VERSION_13_6 = 130600;
-
-const int MAC_OS_VERSION_13_7 = 130700;
-
-const int MAC_OS_VERSION_14_0 = 140000;
-
-const int MAC_OS_VERSION_14_1 = 140100;
-
-const int MAC_OS_VERSION_14_2 = 140200;
-
-const int MAC_OS_VERSION_14_3 = 140300;
-
-const int MAC_OS_VERSION_14_4 = 140400;
-
-const int MAC_OS_VERSION_14_5 = 140500;
-
-const int MAC_OS_VERSION_14_6 = 140600;
-
-const int MAC_OS_VERSION_14_7 = 140700;
-
-const int MAC_OS_VERSION_15_0 = 150000;
-
-const int MAC_OS_VERSION_15_1 = 150100;
-
-const int MAC_OS_VERSION_15_2 = 150200;
-
-const int MAC_OS_VERSION_15_3 = 150300;
-
-const int MAC_OS_VERSION_15_4 = 150400;
-
-const int MAC_OS_VERSION_15_5 = 150500;
-
-const int MAC_OS_VERSION_15_6 = 150600;
-
-const int MAC_OS_VERSION_16_0 = 160000;
-
-const int MAC_OS_VERSION_26_0 = 260000;
-
-const int MAC_OS_VERSION_26_1 = 260100;
-
-const int MAC_OS_VERSION_26_2 = 260200;
-
-const int __AVAILABILITY_VERSIONS_VERSION_HASH = 93585900;
-
-const String __AVAILABILITY_VERSIONS_VERSION_STRING = 'Local';
-
-const String __AVAILABILITY_FILE = 'AvailabilityVersions.h';
-
-const int __MAC_OS_X_VERSION_MIN_REQUIRED = 260000;
-
-const int __MAC_OS_X_VERSION_MAX_ALLOWED = 260200;
-
-const int __ENABLE_LEGACY_MAC_AVAILABILITY = 1;
-
-const int RENAME_SECLUDE = 1;
-
-const int RENAME_SWAP = 2;
-
-const int RENAME_EXCL = 4;
-
-const int RENAME_RESERVED1 = 8;
-
-const int RENAME_NOFOLLOW_ANY = 16;
-
-const int RENAME_RESOLVE_BENEATH = 32;
-
-const int SEEK_SET = 0;
-
-const int SEEK_CUR = 1;
-
-const int SEEK_END = 2;
-
-const int SEEK_HOLE = 3;
-
-const int SEEK_DATA = 4;
-
-const int __SLBF = 1;
-
-const int __SNBF = 2;
-
-const int __SRD = 4;
-
-const int __SWR = 8;
-
-const int __SRW = 16;
-
-const int __SEOF = 32;
-
-const int __SERR = 64;
-
-const int __SMBF = 128;
-
-const int __SAPP = 256;
-
-const int __SSTR = 512;
-
-const int __SOPT = 1024;
-
-const int __SNPT = 2048;
-
-const int __SOFF = 4096;
-
-const int __SMOD = 8192;
-
-const int __SALC = 16384;
-
-const int __SIGN = 32768;
+const int __cookie_io_functions_t_defined = 1;
 
 const int _IOFBF = 0;
 
@@ -21773,21 +20652,63 @@ const int _IOLBF = 1;
 
 const int _IONBF = 2;
 
-const int BUFSIZ = 1024;
+const int BUFSIZ = 8192;
 
 const int EOF = -1;
 
-const int FOPEN_MAX = 20;
+const int SEEK_SET = 0;
 
-const int FILENAME_MAX = 1024;
+const int SEEK_CUR = 1;
 
-const String P_tmpdir = '/var/tmp/';
+const int SEEK_END = 2;
 
-const int L_tmpnam = 1024;
+const String P_tmpdir = '/tmp';
 
-const int TMP_MAX = 308915776;
+const int L_tmpnam = 20;
 
-const int L_ctermid = 1024;
+const int TMP_MAX = 238328;
+
+const int _BITS_STDIO_LIM_H = 1;
+
+const int FILENAME_MAX = 4096;
+
+const int L_ctermid = 9;
+
+const int FOPEN_MAX = 16;
+
+const int __HAVE_FLOAT128 = 0;
+
+const int __HAVE_DISTINCT_FLOAT128 = 0;
+
+const int __HAVE_FLOAT64X = 1;
+
+const int __HAVE_FLOAT64X_LONG_DOUBLE = 1;
+
+const int __HAVE_FLOAT16 = 0;
+
+const int __HAVE_FLOAT32 = 1;
+
+const int __HAVE_FLOAT64 = 1;
+
+const int __HAVE_FLOAT32X = 1;
+
+const int __HAVE_FLOAT128X = 0;
+
+const int __HAVE_DISTINCT_FLOAT16 = 0;
+
+const int __HAVE_DISTINCT_FLOAT32 = 0;
+
+const int __HAVE_DISTINCT_FLOAT64 = 0;
+
+const int __HAVE_DISTINCT_FLOAT32X = 0;
+
+const int __HAVE_DISTINCT_FLOAT64X = 0;
+
+const int __HAVE_DISTINCT_FLOAT128X = 0;
+
+const int __HAVE_FLOAT128_UNLIKE_LDBL = 0;
+
+const int __HAVE_FLOATN_NOT_TYPEDEF = 0;
 
 const int GGML_FILE_MAGIC = 1734831468;
 
