@@ -1,59 +1,74 @@
 import 'dart:ffi' as ffi;
-import 'dart:io';
 
 import 'package:llama_cpp_ffi/llama_cpp_ffi.dart';
 import 'package:test/test.dart';
 
-class _LibraryLoadResult {
-  final ffi.DynamicLibrary? library;
-  final String? skipReason;
-
-  const _LibraryLoadResult(this.library, this.skipReason);
-}
-
-_LibraryLoadResult _loadLlamaLibrary() {
-  final envPath = Platform.environment['LLAMA_CPP_LIBRARY_PATH'];
-  final candidates = <String>[];
-
-  if (envPath != null && envPath.trim().isNotEmpty) {
-    candidates.add(envPath.trim());
-  }
-
-  if (Platform.isMacOS) {
-    candidates.addAll(['libllama.dylib', 'llama.dylib']);
-  } else if (Platform.isLinux) {
-    candidates.addAll(['libllama.so', 'libllama.so.1']);
-  } else if (Platform.isWindows) {
-    candidates.addAll(['llama.dll', 'libllama.dll']);
-  }
-
-  final errors = <String>[];
-  for (final candidate in candidates) {
-    try {
-      return _LibraryLoadResult(ffi.DynamicLibrary.open(candidate), null);
-    } catch (err) {
-      errors.add('$candidate: $err');
-    }
-  }
-
-  final skipReason = StringBuffer()
-    ..writeln('No llama.cpp dynamic library found.')
-    ..writeln('Set LLAMA_CPP_LIBRARY_PATH to the built library, or ensure it is on the system library path.');
-
-  if (errors.isNotEmpty) {
-    skipReason.writeln('Tried: ${errors.join(' | ')}');
-  }
-
-  return _LibraryLoadResult(null, skipReason.toString().trim());
-}
-
 void main() {
-  final loadResult = _loadLlamaLibrary();
+  group('LlamaLibraryLoader', () {
+    test('places LLAMA_CPP_LIBRARY_PATH before platform defaults', () {
+      final candidates = LlamaLibraryLoader.candidatePaths(
+        environment: const {
+          LlamaLibraryLoader.libraryPathEnv: '/custom/libllama.so',
+        },
+        isLinux: true,
+      );
+
+      expect(candidates.first, '/custom/libllama.so');
+      expect(candidates, contains('libllama.so'));
+    });
+
+    test('tries candidates in order until one loads', () {
+      final attempted = <String>[];
+
+      final loaded = LlamaLibraryLoader.open(
+        environment: const {
+          LlamaLibraryLoader.libraryPathEnv: 'missing-first',
+        },
+        isLinux: true,
+        opener: (path) {
+          attempted.add(path);
+          if (path == 'libllama.so') {
+            return ffi.DynamicLibrary.process();
+          }
+          throw ArgumentError('cannot load $path');
+        },
+      );
+
+      expect(loaded, isNotNull);
+      expect(attempted, ['missing-first', 'libllama.so']);
+    });
+
+    test('includes attempted paths in error metadata', () {
+      expect(
+        () => LlamaLibraryLoader.open(
+          environment: const {LlamaLibraryLoader.libraryPathEnv: 'nope'},
+          isLinux: true,
+          opener: (_) => throw ArgumentError('failed'),
+        ),
+        throwsA(
+          isA<LlamaLibraryLoadException>().having(
+            (error) => error.attemptedPaths,
+            'attemptedPaths',
+            ['nope', 'libllama.so', 'libllama.so.1'],
+          ),
+        ),
+      );
+    });
+  });
+
+  final ffi.DynamicLibrary? smokeLibrary;
+  String? smokeSkipReason;
+  try {
+    smokeLibrary = LlamaLibraryLoader.open();
+  } on LlamaLibraryLoadException catch (error) {
+    smokeLibrary = null;
+    smokeSkipReason = error.toString();
+  }
 
   test(
     'llama_backend_init/free smoke test',
     () {
-      final bindings = llama_cpp(loadResult.library!);
+      final bindings = llama_cpp(smokeLibrary!);
       expect(
         () {
           bindings.llama_backend_init();
@@ -62,6 +77,6 @@ void main() {
         returnsNormally,
       );
     },
-    skip: loadResult.skipReason,
+    skip: smokeSkipReason,
   );
 }
