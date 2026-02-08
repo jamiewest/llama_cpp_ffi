@@ -2,3 +2,4 @@
 library;
 
 export 'src/core/llama_cpp.dart';
+export 'src/llama_library_loader.dart';
