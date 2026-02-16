@@ -14570,61 +14570,35 @@ class llama_cpp {
       _llama_adapter_get_alora_invocation_tokensPtr.asFunction<
           ffi.Pointer<llama_token> Function(ffi.Pointer<llama_adapter_lora>)>();
 
-  int llama_set_adapter_lora(
+  int llama_set_adapters_lora(
     ffi.Pointer<llama_context> ctx,
-    ffi.Pointer<llama_adapter_lora> adapter,
-    double scale,
+    ffi.Pointer<ffi.Pointer<llama_adapter_lora>> adapters,
+    int n_adapters,
+    ffi.Pointer<ffi.Float> scales,
   ) {
-    return _llama_set_adapter_lora(
+    return _llama_set_adapters_lora(
       ctx,
-      adapter,
-      scale,
+      adapters,
+      n_adapters,
+      scales,
     );
   }
 
-  late final _llama_set_adapter_loraPtr = _lookup<
+  late final _llama_set_adapters_loraPtr = _lookup<
       ffi.NativeFunction<
           ffi.Int32 Function(
               ffi.Pointer<llama_context>,
-              ffi.Pointer<llama_adapter_lora>,
-              ffi.Float)>>('llama_set_adapter_lora');
-  late final _llama_set_adapter_lora = _llama_set_adapter_loraPtr.asFunction<
-      int Function(ffi.Pointer<llama_context>, ffi.Pointer<llama_adapter_lora>,
-          double)>();
-
-  int llama_rm_adapter_lora(
-    ffi.Pointer<llama_context> ctx,
-    ffi.Pointer<llama_adapter_lora> adapter,
-  ) {
-    return _llama_rm_adapter_lora(
-      ctx,
-      adapter,
-    );
-  }
-
-  late final _llama_rm_adapter_loraPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Pointer<llama_context>,
-              ffi.Pointer<llama_adapter_lora>)>>('llama_rm_adapter_lora');
-  late final _llama_rm_adapter_lora = _llama_rm_adapter_loraPtr.asFunction<
+              ffi.Pointer<ffi.Pointer<llama_adapter_lora>>,
+              ffi.Size,
+              ffi.Pointer<ffi.Float>)>>('llama_set_adapters_lora');
+  late final _llama_set_adapters_lora = _llama_set_adapters_loraPtr.asFunction<
       int Function(
-          ffi.Pointer<llama_context>, ffi.Pointer<llama_adapter_lora>)>();
+          ffi.Pointer<llama_context>,
+          ffi.Pointer<ffi.Pointer<llama_adapter_lora>>,
+          int,
+          ffi.Pointer<ffi.Float>)>();
 
-  void llama_clear_adapter_lora(
-    ffi.Pointer<llama_context> ctx,
-  ) {
-    return _llama_clear_adapter_lora(
-      ctx,
-    );
-  }
-
-  late final _llama_clear_adapter_loraPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Pointer<llama_context>)>>(
-      'llama_clear_adapter_lora');
-  late final _llama_clear_adapter_lora = _llama_clear_adapter_loraPtr
-      .asFunction<void Function(ffi.Pointer<llama_context>)>();
-
-  int llama_apply_adapter_cvec(
+  int llama_set_adapter_cvec(
     ffi.Pointer<llama_context> ctx,
     ffi.Pointer<ffi.Float> data,
     int len,
@@ -14632,7 +14606,7 @@ class llama_cpp {
     int il_start,
     int il_end,
   ) {
-    return _llama_apply_adapter_cvec(
+    return _llama_set_adapter_cvec(
       ctx,
       data,
       len,
@@ -14642,7 +14616,7 @@ class llama_cpp {
     );
   }
 
-  late final _llama_apply_adapter_cvecPtr = _lookup<
+  late final _llama_set_adapter_cvecPtr = _lookup<
       ffi.NativeFunction<
           ffi.Int32 Function(
               ffi.Pointer<llama_context>,
@@ -14650,11 +14624,10 @@ class llama_cpp {
               ffi.Size,
               ffi.Int32,
               ffi.Int32,
-              ffi.Int32)>>('llama_apply_adapter_cvec');
-  late final _llama_apply_adapter_cvec =
-      _llama_apply_adapter_cvecPtr.asFunction<
-          int Function(ffi.Pointer<llama_context>, ffi.Pointer<ffi.Float>, int,
-              int, int, int)>();
+              ffi.Int32)>>('llama_set_adapter_cvec');
+  late final _llama_set_adapter_cvec = _llama_set_adapter_cvecPtr.asFunction<
+      int Function(ffi.Pointer<llama_context>, ffi.Pointer<ffi.Float>, int, int,
+          int, int)>();
 
   void llama_memory_clear(
     llama_memory_t mem,
@@ -16382,9 +16355,9 @@ class llama_cpp {
           ffi.Pointer<ffi.Char>, int, bool, bool)>();
 
   /// Apply chat template. Inspired by hf apply_chat_template() on python.
-  /// Both "model" and "custom_template" are optional, but at least one is required. "custom_template" has higher precedence than "model"
+  ///
   /// NOTE: This function does not use a jinja parser. It only support a pre-defined list of template. See more: https://github.com/ggml-org/llama.cpp/wiki/Templates-supported-by-llama_chat_apply_template
-  /// @param tmpl A Jinja template to use for this chat. If this is nullptr, the model’s default chat template will be used instead.
+  /// @param tmpl A Jinja template to use for this chat.
   /// @param chat Pointer to a list of multiple llama_chat_message
   /// @param n_msg Number of llama_chat_message in this chat
   /// @param add_ass Whether to end the prompt with the token(s) that indicate the start of an assistant message.
