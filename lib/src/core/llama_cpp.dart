@@ -1892,20 +1892,6 @@ class llama_cpp {
   late final _ggml_row_size =
       _ggml_row_sizePtr.asFunction<int Function(int, int)>();
 
-  double ggml_type_sizef(
-    ggml_type type,
-  ) {
-    return _ggml_type_sizef(
-      type.value,
-    );
-  }
-
-  late final _ggml_type_sizefPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.UnsignedInt)>>(
-          'ggml_type_sizef');
-  late final _ggml_type_sizef =
-      _ggml_type_sizefPtr.asFunction<double Function(int)>();
-
   ffi.Pointer<ffi.Char> ggml_type_name(
     ggml_type type,
   ) {
@@ -2074,6 +2060,20 @@ class llama_cpp {
           'ggml_is_empty');
   late final _ggml_is_empty =
       _ggml_is_emptyPtr.asFunction<bool Function(ffi.Pointer<ggml_tensor>)>();
+
+  bool ggml_is_view(
+    ffi.Pointer<ggml_tensor> tensor,
+  ) {
+    return _ggml_is_view(
+      tensor,
+    );
+  }
+
+  late final _ggml_is_viewPtr =
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ggml_tensor>)>>(
+          'ggml_is_view');
+  late final _ggml_is_view =
+      _ggml_is_viewPtr.asFunction<bool Function(ffi.Pointer<ggml_tensor>)>();
 
   bool ggml_is_scalar(
     ffi.Pointer<ggml_tensor> tensor,
@@ -8685,6 +8685,46 @@ class llama_cpp {
           bool,
           bool)>();
 
+  ffi.Pointer<ggml_tensor> ggml_gated_delta_net(
+    ffi.Pointer<ggml_context> ctx,
+    ffi.Pointer<ggml_tensor> q,
+    ffi.Pointer<ggml_tensor> k,
+    ffi.Pointer<ggml_tensor> v,
+    ffi.Pointer<ggml_tensor> g,
+    ffi.Pointer<ggml_tensor> beta,
+    ffi.Pointer<ggml_tensor> state,
+  ) {
+    return _ggml_gated_delta_net(
+      ctx,
+      q,
+      k,
+      v,
+      g,
+      beta,
+      state,
+    );
+  }
+
+  late final _ggml_gated_delta_netPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ggml_tensor> Function(
+              ffi.Pointer<ggml_context>,
+              ffi.Pointer<ggml_tensor>,
+              ffi.Pointer<ggml_tensor>,
+              ffi.Pointer<ggml_tensor>,
+              ffi.Pointer<ggml_tensor>,
+              ffi.Pointer<ggml_tensor>,
+              ffi.Pointer<ggml_tensor>)>>('ggml_gated_delta_net');
+  late final _ggml_gated_delta_net = _ggml_gated_delta_netPtr.asFunction<
+      ffi.Pointer<ggml_tensor> Function(
+          ffi.Pointer<ggml_context>,
+          ffi.Pointer<ggml_tensor>,
+          ffi.Pointer<ggml_tensor>,
+          ffi.Pointer<ggml_tensor>,
+          ffi.Pointer<ggml_tensor>,
+          ffi.Pointer<ggml_tensor>,
+          ffi.Pointer<ggml_tensor>)>();
+
   ffi.Pointer<ggml_tensor> ggml_map_custom1(
     ffi.Pointer<ggml_context> ctx,
     ffi.Pointer<ggml_tensor> a,
@@ -14570,61 +14610,35 @@ class llama_cpp {
       _llama_adapter_get_alora_invocation_tokensPtr.asFunction<
           ffi.Pointer<llama_token> Function(ffi.Pointer<llama_adapter_lora>)>();
 
-  int llama_set_adapter_lora(
+  int llama_set_adapters_lora(
     ffi.Pointer<llama_context> ctx,
-    ffi.Pointer<llama_adapter_lora> adapter,
-    double scale,
+    ffi.Pointer<ffi.Pointer<llama_adapter_lora>> adapters,
+    int n_adapters,
+    ffi.Pointer<ffi.Float> scales,
   ) {
-    return _llama_set_adapter_lora(
+    return _llama_set_adapters_lora(
       ctx,
-      adapter,
-      scale,
+      adapters,
+      n_adapters,
+      scales,
     );
   }
 
-  late final _llama_set_adapter_loraPtr = _lookup<
+  late final _llama_set_adapters_loraPtr = _lookup<
       ffi.NativeFunction<
           ffi.Int32 Function(
               ffi.Pointer<llama_context>,
-              ffi.Pointer<llama_adapter_lora>,
-              ffi.Float)>>('llama_set_adapter_lora');
-  late final _llama_set_adapter_lora = _llama_set_adapter_loraPtr.asFunction<
-      int Function(ffi.Pointer<llama_context>, ffi.Pointer<llama_adapter_lora>,
-          double)>();
-
-  int llama_rm_adapter_lora(
-    ffi.Pointer<llama_context> ctx,
-    ffi.Pointer<llama_adapter_lora> adapter,
-  ) {
-    return _llama_rm_adapter_lora(
-      ctx,
-      adapter,
-    );
-  }
-
-  late final _llama_rm_adapter_loraPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Pointer<llama_context>,
-              ffi.Pointer<llama_adapter_lora>)>>('llama_rm_adapter_lora');
-  late final _llama_rm_adapter_lora = _llama_rm_adapter_loraPtr.asFunction<
+              ffi.Pointer<ffi.Pointer<llama_adapter_lora>>,
+              ffi.Size,
+              ffi.Pointer<ffi.Float>)>>('llama_set_adapters_lora');
+  late final _llama_set_adapters_lora = _llama_set_adapters_loraPtr.asFunction<
       int Function(
-          ffi.Pointer<llama_context>, ffi.Pointer<llama_adapter_lora>)>();
+          ffi.Pointer<llama_context>,
+          ffi.Pointer<ffi.Pointer<llama_adapter_lora>>,
+          int,
+          ffi.Pointer<ffi.Float>)>();
 
-  void llama_clear_adapter_lora(
-    ffi.Pointer<llama_context> ctx,
-  ) {
-    return _llama_clear_adapter_lora(
-      ctx,
-    );
-  }
-
-  late final _llama_clear_adapter_loraPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Pointer<llama_context>)>>(
-      'llama_clear_adapter_lora');
-  late final _llama_clear_adapter_lora = _llama_clear_adapter_loraPtr
-      .asFunction<void Function(ffi.Pointer<llama_context>)>();
-
-  int llama_apply_adapter_cvec(
+  int llama_set_adapter_cvec(
     ffi.Pointer<llama_context> ctx,
     ffi.Pointer<ffi.Float> data,
     int len,
@@ -14632,7 +14646,7 @@ class llama_cpp {
     int il_start,
     int il_end,
   ) {
-    return _llama_apply_adapter_cvec(
+    return _llama_set_adapter_cvec(
       ctx,
       data,
       len,
@@ -14642,7 +14656,7 @@ class llama_cpp {
     );
   }
 
-  late final _llama_apply_adapter_cvecPtr = _lookup<
+  late final _llama_set_adapter_cvecPtr = _lookup<
       ffi.NativeFunction<
           ffi.Int32 Function(
               ffi.Pointer<llama_context>,
@@ -14650,11 +14664,10 @@ class llama_cpp {
               ffi.Size,
               ffi.Int32,
               ffi.Int32,
-              ffi.Int32)>>('llama_apply_adapter_cvec');
-  late final _llama_apply_adapter_cvec =
-      _llama_apply_adapter_cvecPtr.asFunction<
-          int Function(ffi.Pointer<llama_context>, ffi.Pointer<ffi.Float>, int,
-              int, int, int)>();
+              ffi.Int32)>>('llama_set_adapter_cvec');
+  late final _llama_set_adapter_cvec = _llama_set_adapter_cvecPtr.asFunction<
+      int Function(ffi.Pointer<llama_context>, ffi.Pointer<ffi.Float>, int, int,
+          int, int)>();
 
   void llama_memory_clear(
     llama_memory_t mem,
@@ -16382,9 +16395,9 @@ class llama_cpp {
           ffi.Pointer<ffi.Char>, int, bool, bool)>();
 
   /// Apply chat template. Inspired by hf apply_chat_template() on python.
-  /// Both "model" and "custom_template" are optional, but at least one is required. "custom_template" has higher precedence than "model"
+  ///
   /// NOTE: This function does not use a jinja parser. It only support a pre-defined list of template. See more: https://github.com/ggml-org/llama.cpp/wiki/Templates-supported-by-llama_chat_apply_template
-  /// @param tmpl A Jinja template to use for this chat. If this is nullptr, the model’s default chat template will be used instead.
+  /// @param tmpl A Jinja template to use for this chat.
   /// @param chat Pointer to a list of multiple llama_chat_message
   /// @param n_msg Number of llama_chat_message in this chat
   /// @param add_ass Whether to end the prompt with the token(s) that indicate the start of an assistant message.
@@ -16878,7 +16891,7 @@ class llama_cpp {
       _llama_sampler_init_mirostat_v2Ptr.asFunction<
           ffi.Pointer<llama_sampler> Function(int, double, double)>();
 
-  /// @details Intializes a GBNF grammar, see grammars/README.md for details.
+  /// @details Initializes a GBNF grammar, see grammars/README.md for details.
   /// @param vocab The vocabulary that this grammar will be used with.
   /// @param grammar_str The production rules for the grammar, encoded as a string. Returns an empty grammar if empty. Returns NULL if parsing of grammar_str fails.
   /// @param grammar_root The name of the start symbol for the grammar.
@@ -18657,17 +18670,18 @@ enum ggml_op {
   GGML_OP_GATED_LINEAR_ATTN(82),
   GGML_OP_RWKV_WKV7(83),
   GGML_OP_SOLVE_TRI(84),
-  GGML_OP_UNARY(85),
-  GGML_OP_MAP_CUSTOM1(86),
-  GGML_OP_MAP_CUSTOM2(87),
-  GGML_OP_MAP_CUSTOM3(88),
-  GGML_OP_CUSTOM(89),
-  GGML_OP_CROSS_ENTROPY_LOSS(90),
-  GGML_OP_CROSS_ENTROPY_LOSS_BACK(91),
-  GGML_OP_OPT_STEP_ADAMW(92),
-  GGML_OP_OPT_STEP_SGD(93),
-  GGML_OP_GLU(94),
-  GGML_OP_COUNT(95);
+  GGML_OP_GATED_DELTA_NET(85),
+  GGML_OP_UNARY(86),
+  GGML_OP_MAP_CUSTOM1(87),
+  GGML_OP_MAP_CUSTOM2(88),
+  GGML_OP_MAP_CUSTOM3(89),
+  GGML_OP_CUSTOM(90),
+  GGML_OP_CROSS_ENTROPY_LOSS(91),
+  GGML_OP_CROSS_ENTROPY_LOSS_BACK(92),
+  GGML_OP_OPT_STEP_ADAMW(93),
+  GGML_OP_OPT_STEP_SGD(94),
+  GGML_OP_GLU(95),
+  GGML_OP_COUNT(96);
 
   final int value;
   const ggml_op(this.value);
@@ -18758,17 +18772,18 @@ enum ggml_op {
         82 => GGML_OP_GATED_LINEAR_ATTN,
         83 => GGML_OP_RWKV_WKV7,
         84 => GGML_OP_SOLVE_TRI,
-        85 => GGML_OP_UNARY,
-        86 => GGML_OP_MAP_CUSTOM1,
-        87 => GGML_OP_MAP_CUSTOM2,
-        88 => GGML_OP_MAP_CUSTOM3,
-        89 => GGML_OP_CUSTOM,
-        90 => GGML_OP_CROSS_ENTROPY_LOSS,
-        91 => GGML_OP_CROSS_ENTROPY_LOSS_BACK,
-        92 => GGML_OP_OPT_STEP_ADAMW,
-        93 => GGML_OP_OPT_STEP_SGD,
-        94 => GGML_OP_GLU,
-        95 => GGML_OP_COUNT,
+        85 => GGML_OP_GATED_DELTA_NET,
+        86 => GGML_OP_UNARY,
+        87 => GGML_OP_MAP_CUSTOM1,
+        88 => GGML_OP_MAP_CUSTOM2,
+        89 => GGML_OP_MAP_CUSTOM3,
+        90 => GGML_OP_CUSTOM,
+        91 => GGML_OP_CROSS_ENTROPY_LOSS,
+        92 => GGML_OP_CROSS_ENTROPY_LOSS_BACK,
+        93 => GGML_OP_OPT_STEP_ADAMW,
+        94 => GGML_OP_OPT_STEP_SGD,
+        95 => GGML_OP_GLU,
+        96 => GGML_OP_COUNT,
         _ => throw ArgumentError('Unknown value for ggml_op: $value'),
       };
 }
@@ -20325,6 +20340,9 @@ final class llama_model_quantize_params extends ffi.Struct {
 
   @ffi.Bool()
   external bool keep_split;
+
+  @ffi.Bool()
+  external bool dry_run;
 
   external ffi.Pointer<ffi.Void> imatrix;
 
